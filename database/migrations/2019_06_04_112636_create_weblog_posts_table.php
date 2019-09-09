@@ -13,10 +13,7 @@ class CreateWeblogPostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('weblog_posts', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
-        });
+        return;
     }
 
     /**
