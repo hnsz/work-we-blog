@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Post extends Model
 {
     use SoftDeletes;
+    protected $fillable = [
+        'title', 'body', 'created_at', 'published_at'
+    ];
     public function user()
     {
         return $this->belongsTo('App\User');

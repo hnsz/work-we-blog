@@ -12,9 +12,36 @@
         }
     </style>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Asap+Condensed|Chilanka|Cinzel|Cormorant+Garamond|Crimson+Text|Dancing+Script|EB+Garamond|Gayathri|Gentium+Basic|Inconsolata|Josefin+Sans|Lato|Lexend+Giga|Lexend+Mega|Lexend+Peta|Lexend+Tera|Lexend+Zetta|Livvic|Manjari|Merriweather|Open+Sans|Philosopher|Poppins|Quattrocento|Quicksand|Tangerine|Tinos&display=swap" rel="stylesheet">
+    <style type='text/css'>
+        .philosopher {
+            font-family: Philosopher;
+            font-size:22pt;
+        }        
+        
 
 
+        .cormorant {
+                font-family: Cormorant;
+                
+        }
+        
+        .content .card-title {
+            font-family: Cinzel;
+            font-size:15pt;
+        }
+        .nav-pills {
+            font-family: Lato;
+            font-weight:bold;
+            }
+        body {
+            background-color:#456789;
+        }
+        .container {
+            background-color:#FACADE;
+            opacity:0.8;
+        }
+    </style>
 
 </head>
 <body>
@@ -22,8 +49,8 @@
     <ul class='nav nav-pills'>
         @section('site navigation')
         @include('std.parts.links', ['site_links' => [
-                ['href'=>'/', 'name'=>''],
-                ['href'=>'/', 'name'=>' / something'],
+                ['href'=>'/', 'name'=>'/'],
+                ['href'=>'/', 'name'=>' Something'],
                 ['href'=>'/posts', 'name'=>'Popular Posts'],
             ]
         ])

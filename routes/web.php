@@ -22,6 +22,7 @@ Route::resource('/posts', 'PostController');
 
 Route::get('/logout', function () {
     Auth::logout();
+    return redirect('/');
 });
 
 Auth::routes();

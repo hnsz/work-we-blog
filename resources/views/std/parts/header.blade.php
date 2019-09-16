@@ -2,10 +2,10 @@
 
 	<div class='card-body'>
 
-    <h2 class='card-title'>{{$title}}</h2>
+    <h3 class='card-title font-weight-light philosopher'>{{$title}}</h2>
 
     @isset($subtitle)
-        <h4 class="card-subtitle text-muted">{{$subtitle}}</h4>
+        <h4 class="card-subtitle font-weight-lighter cormorant">{{$subtitle}}</h4>
     @endisset
 
     </div>

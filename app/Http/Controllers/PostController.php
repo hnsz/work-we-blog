@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Post;
+use Carbon\Carbon;
 use Auth;
 use Illuminate\Http\RedirectResponse;
 
@@ -64,14 +65,14 @@ class PostController extends Controller
 			    ->withInput();
 	    }
 	    else {
-            //userfromsession
-            //user->posts->create(initlist)
             
+            $now = Carbon::now();
             
-            $initlist['published_at'] = new \Datetime();
-            $initlist['title'] = $request->get('title');
-            $initlist['body'] = $request->get('body');
-            $post = Auth::user()->posts->create($initlist);
+            $initlist = $request->all();
+            $initlist['created_at'] = $now;
+            $initlist['published_at'] = $now;
+            
+            $post = Auth::user()->posts()->create($initlist);
             $post->save();
 
             
@@ -90,7 +91,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('std.posts.read', ['post' => $post]);
     }
 
     /**
