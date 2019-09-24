@@ -15,4 +15,5 @@ yarn-error.log
 .styleci.yml
 bootstrap/cache/*
 .vscode/
+composer.lock
 .gitattributes
