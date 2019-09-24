@@ -1,8 +1,8 @@
-/node_modules
-/public/hot
-/public/storage
-/storage/
-/vendor
+/node_modules/*
+/public/hot/*
+/public/storage/*
+/storage/*
+/vendor/*
 .env
 .phpunit.result.cache
 Homestead.json
@@ -13,6 +13,6 @@ yarn-error.log
 .env.example
 .idea/
 .styleci.yml
-bootstrap/cache/
+bootstrap/cache/*
 .vscode/
 .gitattributes

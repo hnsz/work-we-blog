@@ -25,6 +25,8 @@ Route::get('/logout', function () {
     return redirect('/');
 });
 
+Route::get('posts/{post}/comments/write', 'CommentController@create');
+
 Auth::routes();
 
 

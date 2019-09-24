@@ -8,7 +8,9 @@
 
 @section('content')
 	@include('std.parts.post_full', ['post' => $post])
+
 @endsection
+
 
 
 @section('links')

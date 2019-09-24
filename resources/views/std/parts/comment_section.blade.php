@@ -1,0 +1,1 @@
+@include('std.parts.comment_form')
