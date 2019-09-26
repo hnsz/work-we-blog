@@ -1,0 +1,133 @@
+# file: storage
+# owner: hsec
+# group: hsec
+user::rwx
+group::r-x
+other::r-x
+
+# file: storage/logs
+# owner: hsec
+# group: hsec
+user::rwx
+group::r-x
+other::r-x
+
+# file: storage/logs/.gitignore
+# owner: hsec
+# group: hsec
+user::rw-
+group::r--
+other::r--
+
+# file: storage/framework
+# owner: hsec
+# group: hsec
+user::rwx
+group::r-x
+other::r-x
+
+# file: storage/framework/testing
+# owner: hsec
+# group: hsec
+user::rwx
+group::r-x
+other::r-x
+
+# file: storage/framework/testing/.gitignore
+# owner: hsec
+# group: hsec
+user::rw-
+group::r--
+other::r--
+
+# file: storage/framework/views
+# owner: hsec
+# group: hsec
+user::rwx
+group::r-x
+other::r-x
+
+# file: storage/framework/views/.gitignore
+# owner: hsec
+# group: hsec
+user::rw-
+group::r--
+other::r--
+
+# file: storage/framework/sessions
+# owner: hsec
+# group: hsec
+user::rwx
+group::r-x
+other::r-x
+
+# file: storage/framework/sessions/.gitignore
+# owner: hsec
+# group: hsec
+user::rw-
+group::r--
+other::r--
+
+# file: storage/framework/.gitignore
+# owner: hsec
+# group: hsec
+user::rw-
+group::r--
+other::r--
+
+# file: storage/framework/cache
+# owner: hsec
+# group: hsec
+user::rwx
+group::r-x
+other::r-x
+
+# file: storage/framework/cache/.gitignore
+# owner: hsec
+# group: hsec
+user::rw-
+group::r--
+other::r--
+
+# file: storage/framework/cache/data
+# owner: hsec
+# group: hsec
+user::rwx
+group::r-x
+other::r-x
+
+# file: storage/framework/cache/data/.gitignore
+# owner: hsec
+# group: hsec
+user::rw-
+group::r--
+other::r--
+
+# file: storage/app
+# owner: hsec
+# group: hsec
+user::rwx
+group::r-x
+other::r-x
+
+# file: storage/app/.gitignore
+# owner: hsec
+# group: hsec
+user::rw-
+group::r--
+other::r--
+
+# file: storage/app/public
+# owner: hsec
+# group: hsec
+user::rwx
+group::r-x
+other::r-x
+
+# file: storage/app/public/.gitignore
+# owner: hsec
+# group: hsec
+user::rw-
+group::r--
+other::r--
+

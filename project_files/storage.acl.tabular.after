@@ -1,0 +1,95 @@
+# file: storage
+USER   hsec      rwx  rwx
+GROUP  http      rwx  rwx
+other            r-x  r-x
+
+# file: storage/logs
+USER   hsec      rwx  rwx
+GROUP  http      rwx  rwx
+other            r-x  r-x
+
+# file: storage/logs/.gitignore
+USER   hsec      rwx     
+GROUP  http      r--     
+other            r--     
+
+# file: storage/framework
+USER   hsec      rwx  rwx
+GROUP  http      rwx  rwx
+other            r-x  r-x
+
+# file: storage/framework/testing
+USER   hsec      rwx  rwx
+GROUP  http      rwx  rwx
+other            r-x  r-x
+
+# file: storage/framework/testing/.gitignore
+USER   hsec      rwx     
+GROUP  http      r--     
+other            r--     
+
+# file: storage/framework/views
+USER   hsec      rwx  rwx
+GROUP  http      rwx  rwx
+other            r-x  r-x
+
+# file: storage/framework/views/.gitignore
+USER   hsec      rwx     
+GROUP  http      r--     
+other            r--     
+
+# file: storage/framework/sessions
+USER   hsec      rwx  rwx
+GROUP  http      rwx  rwx
+other            r-x  r-x
+
+# file: storage/framework/sessions/.gitignore
+USER   hsec      rwx     
+GROUP  http      r--     
+other            r--     
+
+# file: storage/framework/.gitignore
+USER   hsec      rwx     
+GROUP  http      r--     
+other            r--     
+
+# file: storage/framework/cache
+USER   hsec      rwx  rwx
+GROUP  http      rwx  rwx
+other            r-x  r-x
+
+# file: storage/framework/cache/.gitignore
+USER   hsec      rwx     
+GROUP  http      r--     
+other            r--     
+
+# file: storage/framework/cache/data
+USER   hsec      rwx  rwx
+GROUP  http      rwx  rwx
+other            r-x  r-x
+
+# file: storage/framework/cache/data/.gitignore
+USER   hsec      rwx     
+GROUP  http      r--     
+other            r--     
+
+# file: storage/app
+USER   hsec      rwx  rwx
+GROUP  http      rwx  rwx
+other            r-x  r-x
+
+# file: storage/app/.gitignore
+USER   hsec      rwx     
+GROUP  http      r--     
+other            r--     
+
+# file: storage/app/public
+USER   hsec      rwx  rwx
+GROUP  http      rwx  rwx
+other            r-x  r-x
+
+# file: storage/app/public/.gitignore
+USER   hsec      rwx     
+GROUP  http      r--     
+other            r--     
+
