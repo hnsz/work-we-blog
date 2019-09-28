@@ -38,14 +38,23 @@
             background-color:#456789;
         }
         .container {
-            background-color:#FACADE;
+            background-color:#9e124c;
             opacity:0.8;
         }
+        .wrapper {
+            padding: 7px 5px 10px 5px;
+            background-color:white;
+                    
+        }
+        
     </style>
 
 </head>
 <body>
 <div class='container flex-center position-ref full-height pt-2'>
+    <div class='wrapper'>
+
+
     <ul class='nav nav-pills'>
         @section('site navigation')
         @include('std.parts.links', ['site_links' => [
@@ -75,21 +84,22 @@
         @endif
     </ul>
 
-
+    <div class='.content-header-wrap'>
     @yield('header')
 
 
-
-	<div class="content">
-        @yield('content')
-	</div> <!--//content   -->
-
+    <div class='.content-body-wrap'>
+        <div class="content">
+            @yield('content')
+        </div> <!--//content   -->
+    </div>
 
         <nav class="navbar navbar-light navbar-fixed-bottom row">
             @section('links')
                 <a href="https://laravel.com/docs">Docs</a>
             @show
         </nav>
+    </div>  <!--// wrapper -->
 </div> <!--// container    -->
 </body>
 </html>
