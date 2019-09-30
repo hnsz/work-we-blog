@@ -12,6 +12,8 @@ class CommentThreadSeeder extends Seeder
     public function run()
     {
         $cthread = App\Post::find(1)->CommentThread()->create();
+        $reply1 = $cthread->reply()-create();
+        $reply
         $cthread->save();
     }
 }
