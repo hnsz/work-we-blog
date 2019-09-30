@@ -41,6 +41,6 @@ class PostsTableSeeder extends Seeder
 
             $post->save();
         }
-
+        $this->call(CommentThreadSeeder::class);
     }
 }

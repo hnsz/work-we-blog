@@ -6,12 +6,8 @@
         </h4>
         <p class='card-text'>{{$post->body}}
     
-        <div class='card-footer'>
-        <ul class="nav nav-tabs">
-        <li class='nav-item '>
-                <h6 class='nav-link active'>Write a Comment..</h6></li>
-        </ul>
         @include("std.parts.comment_form")
+        <div class='card-footer'>
         </div>
         
     </div>
