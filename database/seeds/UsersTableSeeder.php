@@ -17,9 +17,11 @@ class UsersTableSeeder extends Seeder
         $this->runOnce ();
         $users  = require 'dataproviders/userdataprovider.php';
 
-        foreach($users as $user)
+
+        foreach($users as $user) {
+            var_dump($user);
             DB::table('users')->insert($user);
-       
+        }
     }
     public function runOnce () {
         $result = DB::select('select * from users where name =?', ["hns"]);

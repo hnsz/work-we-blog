@@ -13,6 +13,26 @@
 			<input type='text' name='minor_title' placeholder='title is optional' class='form-control' maxlength='25' value="{{old('minor_title')}}">
 	</div> 
 
+
+
+	<div class='input-group input-group-sm'>
+	<label>
+		Sex:
+		<input name=sex list=sexes>
+	  </label>
+	  <datalist id=sexes>
+		<label>
+		or select from the list:
+		<select name=sex>
+		  <option value="">
+		  <option>Female
+		  <option>Male
+		</select>
+		</label>
+	  </datalist>
+	</div>
+
+
 	 <div class='input-group input-group-sm'>
 	   <div class='input-group-prepend'>
 		   <label class="input-group-text btn btn-success"></label>

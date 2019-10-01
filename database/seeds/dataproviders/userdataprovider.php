@@ -12,7 +12,7 @@ function usergen($faker)
     for($i=0; $i<10; $i++)
     {
         yield  [
-            "name" => $faker->name,
+            "name" => $faker->username,
             "email" => $faker->email,
             "password" => Hash::make("welkom01"),
             "created_at" => $faker->dateTimeBetween($startDate = '-2 year', $enddate ='now'),
