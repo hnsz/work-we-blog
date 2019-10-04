@@ -4,16 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 class CommentThread extends Model
 {
-    //
-    public function replyable()
+    protected $fillable = [ 
+        'thread_starter_id'
+    ];
+    public function replies( )
     {
-        return $this->morphTo();
+       return  $this->hasMany('App\Comment');
     }
-    public function comments()
+    public function threadStarter()
     {
-        return $this->hasMany('App\Comment');
+        return $this->belongsTo('App\ThreadStarter');
     }
 }

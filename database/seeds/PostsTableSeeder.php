@@ -34,7 +34,7 @@ class PostsTableSeeder extends Seeder
             $initlist = $data;
             
             $post = App\User::find(1)->posts()->create($initlist);
-
+            
                     
             
             

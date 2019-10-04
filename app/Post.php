@@ -12,9 +12,9 @@ class Post extends Model
     protected $fillable = [
         'title', 'body', 'created_at', 'published_at'
     ];
-    public function commentthread()
+    public function threadStarter()
     {
-        return $this->morphOne('App\CommentThread', 'replyable');
+        return $this->morphOne('App\ThreadStarter', 'replyable');
     }
 
     public function user()

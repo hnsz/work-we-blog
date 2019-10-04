@@ -3,6 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+
 
 class Comment extends Model
 {
@@ -10,10 +13,14 @@ class Comment extends Model
         protected $fillable = [
         'minor_title', 'body'
     ];
-    public function commentthread()
+    public function commentThread()
     {
-        return $this->morphOne('App\CommentThread', 'replyable');
-     }
+        return $this->belongsTo('App\CommentThread');
+    }
+     public function threadStarter()
+     {
+         return $this->morphOne('App\ThreadStarter', 'replyable');
+    }
     public function user()
     {
         return $this->belongsTo('App\User');
