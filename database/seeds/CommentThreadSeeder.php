@@ -13,22 +13,32 @@ class CommentThreadSeeder extends Seeder
     {
             
             $starter = App\Post::find(1)->threadStarter()->create();
-            $thread= $starter->commentThread()->create(['thread_starter_id' => $starter]);
+            
+            $thread = $starter->commentThread()->create(['thread_starter_id' => $starter]);
             
                 $user = App\User::find(2);
-                $comment =[
-                    'body' => "hello nice story"
-                    
+                $init_list =[
+                    'body' => "hello nice story",
+                    'minor_title' => 'none',
+                    'comment_thread_id' => $thread->id
                     ];    
-                $reply = new App\Comment();
-                $reply->user=$user;
-                $thread->replies->associate($reply);
-
-
-
-                // $thread->replies(); //Comment
+                $comment = $user->comments()->create($init_list);
+                // $comment->user=$user;
+                $comment->commentThread()->associate($thread);
                 
-            print_r((array)$reply);
+                $starter->save();
+                $thread->save();
+                $user->save();
+                $comment->save();
+
+
+                
+            // print_r($user);
+            print_r($comment);
+            // print_r($starter);
+            // print_r($thread);
+            
+            
             
         // $thread = new App\CommentThread(App\Post::find(1));
         // $thread->reply(new App\Comment($comment));

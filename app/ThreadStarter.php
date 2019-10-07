@@ -18,5 +18,9 @@ class ThreadStarter extends Model
     {
         return $this->hasOne('App\CommentThread');
     }
-
+    // Has Many Through Thread
+    // public function replies( )
+    // {
+    //    return $this->hasMany('App\Comment');
+    // }
 }

@@ -11,15 +11,17 @@ class Comment extends Model
 {
     use SoftDeletes;
         protected $fillable = [
-        'minor_title', 'body'
+        'minor_title', 'body', 'user_id', 'comment_thread_id'
     ];
+
+    public function threadStarter()
+    {
+         return $this->morphOne('App\ThreadStarter', 'replyable');
+    }
+
     public function commentThread()
     {
         return $this->belongsTo('App\CommentThread');
-    }
-     public function threadStarter()
-     {
-         return $this->morphOne('App\ThreadStarter', 'replyable');
     }
     public function user()
     {
