@@ -22,7 +22,7 @@ class CommentThreadSeeder extends Seeder
                     ];    
                 $reply = new App\Comment();
                 $reply->user=$user;
-                $thread->replies = $reply;
+                $thread->replies->associate($reply);
 
 
 
