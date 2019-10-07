@@ -16,13 +16,15 @@
 		class='form-control' maxlength='25' value="{{old('minor_title')}}">
 	</div> 
 
-	<div class='input-group input-group-sm'>
+	<div class='input-group input-group-sm' >
 
 	    <textarea id="form[comment][item[body]]" rows='4' cols='40' name='body'
 		 placeholder="" required class='form-control'>{{old('body')}}</textarea>
-            <div class="input-group-append">
-            <input type='submit' name='submit' class='btn-success'>			
-            </div>
-        </div>
-    </div>
+	</div>
+	<div class='input-group input-group-sm' >
+		<div class="input-group-append " style="height:30px;"">
+			<input type='submit' name='submit' class='btn btn-success'>
+		</div>
+	</div>
+    
 </form>
