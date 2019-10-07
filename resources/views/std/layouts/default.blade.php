@@ -99,6 +99,12 @@
                 <a href="https://laravel.com/docs">Docs</a>
             @show
         </nav>
+        <p>
+            Progress:
+            <progress id="pbar" max="1000" value="150" style="width:100%;">
+              <span id="pVal"></span>%
+            </progress>
+          </p>
     </div>  <!--// wrapper -->
 </div> <!--// container    -->
 </body>

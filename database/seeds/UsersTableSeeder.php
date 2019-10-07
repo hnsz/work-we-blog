@@ -25,6 +25,7 @@ class UsersTableSeeder extends Seeder
     }
     public function runOnce () {
         $result = DB::select('select * from users where name =?', ["hns"]);
+        
         if(empty($result))  {
             DB::table('users')->insert([
                 'name' => 'hns',

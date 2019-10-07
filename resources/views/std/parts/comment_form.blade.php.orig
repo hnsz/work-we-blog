@@ -16,7 +16,40 @@
 		class='form-control' maxlength='25' value="{{old('minor_title')}}">
 	</div> 
 
+<<<<<<< HEAD
+
+
+	<div class='input-group input-group-sm'>
+	<label>
+		Sex:
+		<input name=sex list=sexes>
+	  </label>
+	  <datalist id=sexes>
+		<label>
+		or select from the list:
+		<select name=sex>
+		  <option value="">
+		  <option>Female
+		  <option>Male
+		</select>
+		</label>
+	  </datalist>
+	</div>
+
+
+	 <div class='input-group input-group-sm'>
+	   <div class='input-group-prepend'>
+		   <label class="input-group-text btn btn-success"></label>
+		</div>
+		<textarea rows='4' cols='40' name='body' placeholder="" required class='form-control'>{{old('body')}}</textarea>
+		<div class="input-group-append">
+				<input type='submit' name='submit' class=' btn-success'>			
+		  </div>
+   	   </div>
+
+=======
 	<div class='input-group input-group-sm' >
+>>>>>>> thuis
 
 	    <textarea id="form[comment][item[body]]" rows='4' cols='40' name='body'
 		 placeholder="" required class='form-control'>{{old('body')}}</textarea>

@@ -11,6 +11,14 @@ class CommentThreadSeeder extends Seeder
      */
     public function run()
     {
+<<<<<<< HEAD
+
+#        $thread = App\Post::find(1)->CommentThread()->create();
+        
+ #       $reply = $thread->reply()-create();
+        
+        #$cthread->save();
+=======
             
             $starter = App\Post::find(1)->threadStarter()->create();
             
@@ -43,5 +51,6 @@ class CommentThreadSeeder extends Seeder
         // $thread = new App\CommentThread(App\Post::find(1));
         // $thread->reply(new App\Comment($comment));
 
+>>>>>>> thuis
     }
 }

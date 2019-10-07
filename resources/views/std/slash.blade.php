@@ -11,4 +11,5 @@
 	@parent
 
 	<a href="https://laravel.com/api">api</a>
+
 @endsection
