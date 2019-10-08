@@ -35,7 +35,9 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /***
+         *      store a new comment from with the request data
+            */
     }
 
     /**
@@ -46,7 +48,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        //
+        
     }
 
     /**
@@ -57,7 +59,7 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+        return view('std.parts.comment_form');
     }
 
     /**
@@ -69,7 +71,9 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        /***
+         *      
+            */
     }
 
     /**
