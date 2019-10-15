@@ -11,7 +11,33 @@ class CommentThreadSeeder extends Seeder
      */
     public function run()
     {
-            
+
+        /**
+         * 
+         *
+               Part A / Post : Replyable 
+
+                 Start with UserA 
+                create Post on UserA
+                    Pull the Post into the commentsection context(in the mind's eye): 
+                    Instantiate the replyable relation, instantiate ThreadStarter
+                                Get the replyid from threadstarter
+                    save
+                Part B / Comment  (reply to previous Post )
+                
+                Start with User B
+                create Comment on User B
+                
+                Find the ThreadStarter By ReplyId 
+                
+                    ThreadStarter::commentThread        (reply(id) -> CommentThread )
+                
+                CommentThread->attach(Comment) 
+                        save
+         **/
+
+
+
             $starter = App\Post::find(1)->threadStarter()->create();
             
             $thread = $starter->commentThread()->create(['thread_starter_id' => $starter]);
@@ -44,4 +70,5 @@ class CommentThreadSeeder extends Seeder
         // $thread->reply(new App\Comment($comment));
 
     }
+
 }
