@@ -13,10 +13,12 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
         $now = Carbon::now();
-        $posts = require 'dataproviders/users.provider.php';
+        $posts = require 'dataproviders/posts.provider.php';
 
-        foreach($dummy as $data) {
+        foreach($posts as $data) {
+            $data['published_at'] = $now ;
             $initlist = $data;
+
             
             $post = App\User::find(1)->posts()->create($initlist);
             
