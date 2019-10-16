@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $this->runOnce ();
-        $users  = require 'dataproviders/userdataprovider.php';
+        $users  = require 'dataproviders/users.provider.php';
 
 
         foreach($users as $user) {
