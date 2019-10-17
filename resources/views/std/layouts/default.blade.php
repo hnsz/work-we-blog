@@ -6,56 +6,74 @@
 
     <title>Laravel</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style type='text/css'>
+    <style>
         .nav a:visited, .nav a:hover, .nav a:active, .nav a:link {
             color: white;
         }
     </style>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Asap+Condensed|Chilanka|Cinzel|Cormorant+Garamond|Crimson+Text|Dancing+Script|EB+Garamond|Gayathri|Gentium+Basic|Inconsolata|Josefin+Sans|Lato|Lexend+Giga|Lexend+Mega|Lexend+Peta|Lexend+Tera|Lexend+Zetta|Livvic|Manjari|Merriweather|Open+Sans|Philosopher|Poppins|Quattrocento|Quicksand|Tangerine|Tinos&display=swap" rel="stylesheet">
-    <style type='text/css'>
+
+
+    <style>
         .philosopher {
             font-family: Philosopher;
             font-size:22pt;
         }        
-        
-
-
         .cormorant {
                 font-family: Cormorant;
                 
         }
-        
-        .content .card-title {
+        .EBGaramond-Regular {
+                font-family: 'EB Garamond', serif;
+                font-size: 18px;
+
+        }
+
+        body {
+            background-color:#456789;
+        }
+        .container {
+            background-color:#ffeeef;
+        }
+
+        .content {
+            padding:  15px 10px 100px 10px;
+            background-color:#9e124c;
+            opacity:0.8;
+        }
+        .content-header-wrap {
+            background-color:#456789;            
+        }   
+        .content-body-wrap {
+            background-color:#456789;
+        }        
+
+        .content-header-wrap .card {
+            margin:10px;
+            padding:20px;
             font-family: Cinzel;
             font-size:15pt;
+        }
+        .content-body-wrap .card {
+            margin:10px;
+            padding: 15px 50px 20px 70px;
+        }
+        .navbar-fixed-bottom {
+            padding-bottom:30px;
         }
         .nav-pills {
             font-family: Lato;
             font-weight:bold;
             }
-        body {
-            background-color:#456789;
-        }
-        .container {
-            background-color:#9e124c;
-            opacity:0.8;
-        }
-        .wrapper {
-            padding: 7px 5px 10px 5px;
-            background-color:white;
-                    
-        }
+
         
     </style>
 
 </head>
 <body>
 <div class='container flex-center position-ref full-height pt-2'>
-    <div class='wrapper'>
-
-
-    <ul class='nav nav-pills'>
+    <ul class='nav nav-pills EBGaramond-Regular'>
         @section('site navigation')
         @include('std.parts.links', ['site_links' => [
                 ['href'=>'/', 'name'=>'/'],
@@ -63,8 +81,6 @@
                 ['href'=>'/posts', 'name'=>'Popular Posts'],
             ]
         ])
-
-
         @show
 
         @if (Route::has('login'))
@@ -84,29 +100,26 @@
         @endif
     </ul>
 
-    <div class='.content-header-wrap'>
-    @yield('header')
+    <div class="content">
+        <div class='content-header-wrap' >
+            @yield('header')
+        </div>      <!--//  content-header-wrao -->
+        
 
+        <div class='content-body-wrap'>
+            
+                @yield('content')
 
-    <div class='.content-body-wrap'>
-        <div class="content">
-            @yield('content')
-        </div> <!--//content   -->
-    </div>
+        </div>      <!--//  content-body-wrao -->
+    </div> <!--//content   -->
 
-        <nav class="navbar navbar-light navbar-fixed-bottom row">
-            @section('links')
-                <a href="https://laravel.com/docs">Docs</a>
-            @show
-        </nav>
-        <p>
-            Progress:
-            <progress id="pbar" max="1000" value="150" style="width:100%;">
-              <span id="pVal"></span>%
-            </progress>
-          </p>
-    </div>  <!--// wrapper -->
-</div> <!--// container    -->
+            <nav class="navbar navbar-light navbar-fixed-bottom row">
+                @section('links')
+                    <a href="https://laravel.com/docs">Docs</a>
+                @show
+            </nav>      <!--//  navbar -->
+        
+    </div> <!--// container    -->
 </body>
 </html>
 

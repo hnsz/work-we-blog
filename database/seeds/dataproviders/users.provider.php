@@ -21,8 +21,3 @@ function usergen($faker)
 };
 $gen = usergen($faker);
 return $gen;
-// foreach($gen as $user){
-//     $users[] =  $user;
-// }
-
-// return $users;

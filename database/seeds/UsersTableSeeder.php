@@ -19,7 +19,6 @@ class UsersTableSeeder extends Seeder
 
 
         foreach($users as $user) {
-            var_dump($user);
             DB::table('users')->insert($user);
         }
     }

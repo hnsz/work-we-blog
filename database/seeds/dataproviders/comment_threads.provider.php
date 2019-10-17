@@ -3,6 +3,7 @@
 return [
   "comment" => [
   "user" => $user[0],
+
   "text" => "i have a question about the english language: are parcel and packet synonym in any way?"
   ],
   "comment" => [

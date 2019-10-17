@@ -4,71 +4,87 @@
 
 
 return [
-/**
- * 
- */
-[
-                'title' =>
-                <<<'EOD'
+/** 
+     * Constraints
+     *   
+     */
+[                'title' =>
+<<<'EOD'
 The Slashdot Comment Generator; now even you can get that +5 Funny 
 EOD,
-                'body' =>
-                <<<'EOD'
-You appear to be posting a
+                 'body' =>
+<<<'EOD'
 
-( ) in Soviet Russia
-(x) I for one welcome out new ... overlords
-( ) imagine a Beowulf cluster
-( ) Does it run Linux
-( ) Spam prevention will not work checklist
-(x) You must be new here
-( ) insensitive clod
-( ) in Korea only old people
-( ) Netcraft confirms
-( ) Stephen King is dead
-( ) a highly moderated post from the previous duped story
-( ) gee I've never had that probl%!$*%& [No Carrier]
+<h5 class='EBGaramond-Regular pt-5 pb-2'>You appear to be posting a</h5>
 
-post in an attempt to obtain karma. Your attempt will not work. Here is why it won't work. (One or more of the following may apply to your particular post, and it may have other flaws which used to vary from topic to topic.)
+<ul class='list-group list-group-flush pl-3'>
+   	<li class='list-group-item  p-1'>( )		in Soviet Russia</li>
+   	<li class='list-group-item  p-1'>(x)		I for one welcome out new ... overlords</li>
+   	<li class='list-group-item  p-1'>( )		imagine a Beowulf cluster</li>
+   	<li class='list-group-item  p-1'>( )		Does it run Linux</li>
+   	<li class='list-group-item  p-1'>( )		Spam prevention will not work checklist</li>
+   	<li class='list-group-item  p-1'>(x)		You must be new here</li>
+   	<li class='list-group-item  p-1'>( )		insensitive clod</li>
+   	<li class='list-group-item  p-1'>( )		in Korea only old people</li>
+   	<li class='list-group-item  p-1'>( )		Netcraft confirms</li>
+   	<li class='list-group-item  p-1'>( )		Stephen King is dead</li>
+   	<li class='list-group-item  p-1'>( )		a highly moderated post from the previous duped story</li>
+   	<li class='list-group-item  p-1'>( )		gee I've never had that probl%!$*%& [No Carrier]</li>
+</ul>
 
-(x) Posts like yours are getting old an tired, and quite frankly we're sick of them
-(x) Your User Id is too high
-( ) It just isn't funny enough
-(x) Funny mods don't give karma
 
-Specifically, your post fails to cater to
 
-( ) Anything relevant to the story
-(x) Extreme stupidity on the part of moderators
-( ) Extensive research into the topic
+<h5  class='EBGaramond-Regular pt-5>Post in an attempt to obtain karma. Your attempt will not work. Here is why it won't work. (One or more of the following may apply to your particular post, and it may have other flaws which used to vary from topic to topic.)</h5>
 
-and the following philosophical objections may also apply:
+<ul class='list-group list-group-flush pl-3'>
+   	<li class='list-group-item  p-1'>(x)		Posts like yours are getting old an tired, and quite frankly we're sick of them</li>
+   	<li class='list-group-item  p-1'>(x)		Your User Id is too high</li>
+   	<li class='list-group-item  p-1'>( )		It just isn't funny enough</li>
+   	<li class='list-group-item  p-1'>(x)		Funny mods don't give karma</li>
+</ul>
 
-( ) Posts similar to yours are easy to come up with, yet none have ever been highly moderated
-( ) That's a common troll that has never been verified
-(x) You obviously haven't read the article
-(x) You haven't even read the summary
-( ) Or the headline
-( ) Killing you that way is not slow and painful enough
 
-Furthermore, this is what I think about you:
+<h5   class='EBGaramond-Regular pt-5 pb-2'>Specifically, your post fails to cater to</h5>
 
-( ) Sorry dude, but I don't think it would work.
-(x) This is a stupid post, and you're a stupid person for posting it.
-( ) Nice try, assh0le! I'm going to find out where you live and burn your
-house down!
+<ul class='list-group list-group-flush pl-3'>
+   	<li class='list-group-item  p-1'>( )		Anything relevant to the story</li>
+   	<li class='list-group-item  p-1'>(x)		Extreme stupidity on the part of moderators</li>
+   	<li class='list-group-item  p-1'>( )		Extensive research into the topic</li>
+</ul>
+
+
+
+<h5   class='EBGaramond-Regular pt-5 pb-2'>And the following philosophical objections may also apply:</h5>
+
+<ul class='list-group list-group-flush pl-3'>
+   	<li class='list-group-item  p-1'>( )		Posts similar to yours are easy to come up with, yet none have ever been highly moderated</li>
+   	<li class='list-group-item  p-1'>( )		That's a common troll that has never been verified</li>
+   	<li class='list-group-item  p-1'>(x)		You obviously haven't read the article</li>
+   	<li class='list-group-item  p-1'>(x)		You haven't even read the summary</li>
+   	<li class='list-group-item  p-1'>( )		Or the headline</li>
+   	<li class='list-group-item  p-1'>( )		Killing you that way is not slow and painful enough</li>
+</ul>
+
+
+<h5   class='EBGaramond-Regular pt-5 pb-2 '>Furthermore, this is what I think about you:</h5>
+
+<ul class='list-group list-group-flush pl-3 list-unstyled'>
+   	<li class='list-group-item  p-1'>( )		Sorry dude, but I don't think it would work.</li>
+   	<li class='list-group-item  p-1'>(x)		This is a stupid post, and you're a stupid person for posting it.</li>
+   	<li class='list-group-item  p-1'>( )		 Nice try, assh0le! I'm going to find out where you live and burn your house down!</li>
+</ul>
+
+
 EOD],
 
-[
-                'title' =>
+
+
+[               'title' =>
                 <<<'EOD'
 Parcelhero's Quick Rise to Fame On The Financial Playing Field
 EOD,
-
-
-    
-                'body' =>
-                <<<'EOD'
+               'body' =>
+<<<'EOD'
 ParcelHero has entered the Financial Times’ FT 1000 list of Europe’s fastest growing companies, breaking straight into the top 500 at 497.
 
 The FT 1000, compiled with Statista, lists the European companies that achieved the highest compound annual growth rate in revenue between 2014 and 2017.
@@ -80,11 +96,16 @@ The annual FT 1000 ranking is now in its third year. The hurdle to securing a pl
 ParcelHero was entered in its Technology Sector. The FT 1000 continues to be dominated by technology companies, which account for 149 of the businesses listed.
 
 ParcelHero is one of the British companies helping to fly the flag against a growing German lion’s share of the listing. 230 German companies made it into the FT 1000 this year, while London remains the top city, with 63 businesses based there.
-
 EOD],
-[
-                'title' =>
-                <<<'EOD'
+
+
+
+
+
+
+
+[                'title' =>
+<<<'EOD'
 Cybercrime and the Underground Market
 EOD,
 
@@ -132,13 +153,12 @@ EOD],
 /**
  * 
  */
-[ 
-                'title' =>
-                <<<'EOD'
+[                 'title' =>
+<<<'EOD'
 Cybercrime and the Underground Market 
 EOD,
                 'body' =>
-                <<<'EOD'
+<<<'EOD'
 Deep in the cybercrime underground
 It’s impossible to provide a clear picture of the wide worldwide hacker community, a complex universe composed by a wide number of groups that share opinions, tools and any other information on dedicated and self-managed forums. The platforms are various; every technology is good if the final intent is sharing, even better if it is possible to keep away law enforcement and other prying eyes.
 
