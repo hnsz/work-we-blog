@@ -14,7 +14,7 @@ class CommentThread extends Model
     {
         return $this->belongsTo('App\ThreadStarter');
     }
-    public function comments()
+    public function replies()
     {
         return $this->hasMany('App\Comment');
     }
