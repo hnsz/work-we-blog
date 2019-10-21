@@ -19,3 +19,4 @@ class CommentThread extends Model
         return $this->hasMany('App\Comment');
     }
 }
+

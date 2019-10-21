@@ -10,5 +10,5 @@
             <div class='card-footer pb-5'>
             </div>
         </article>
-        @include("std.parts.comment_section")
+        @include("comment.section")
 </div>  <!--//      close div.card -->

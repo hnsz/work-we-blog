@@ -65,7 +65,6 @@ class PostController extends Controller
 			    ->withInput();
 	    }
 	    else {
-            
             $now = Carbon::now();
             
             $initlist = $request->all();
@@ -73,9 +72,11 @@ class PostController extends Controller
             $initlist['published_at'] = $now;
             
             $post = Auth::user()->posts()->create($initlist);
+
+
             $post->save();
 
-            
+                        
 
             return redirect('/posts')->with('message', 'Successfully added your post. You should find it in the list below.');
         }

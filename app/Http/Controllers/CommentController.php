@@ -1,4 +1,5 @@
 <?php
+ 
 
 namespace App\Http\Controllers;
 
@@ -12,9 +13,12 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(\App\Post $post)
     {
         //
+        $thread = $post->threadStarter->commentThread;
+        return $thread->replies;
+        return view('std.posts.read', ['post' => $post]);
     }
 
     /**
@@ -25,7 +29,7 @@ class CommentController extends Controller
     public function create(\App\Post $post)
     {
         return view('std.posts.read', ['post' => $post]);
-    }
+    }  
 
     /**
      * Store a newly created resource in storage.
@@ -59,6 +63,7 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
+        
         return view('std.parts.comment_form');
     }
 
@@ -86,4 +91,4 @@ class CommentController extends Controller
     {
         //
     }
-}
+ }

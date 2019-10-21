@@ -9,10 +9,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Post extends Model
 {
     use SoftDeletes;
+    protected $with = ['threadStarter'];
     protected $fillable = [
         'title', 'body', 'created_at', 'published_at'
     ];
     public function threadStarter()
+    
     {
         return $this->morphOne('App\ThreadStarter', 'replyable');
     }
