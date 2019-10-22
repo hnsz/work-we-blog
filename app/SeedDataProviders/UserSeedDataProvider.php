@@ -1,9 +1,9 @@
 <?php
 
 namespace App\SeedDataProvider;
-use App\Contracts\SeedDataProvider;
+use App\Contracts\SeedDataProvider\SeedDataProvider;
 
-class UserSeedDataProvider implements  SeedDataProvider
+class UserSeedDataProvider implements SeedDataProvider
 {
     private $generator = NULL;
 
