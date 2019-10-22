@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use \App\Comment;
+use \App\CommentThread;
 
 
 class ThreadStarter extends Model
@@ -17,6 +19,11 @@ class ThreadStarter extends Model
     public function commentThread()
     {
         return $this->hasOne('App\CommentThread');
+    }
+    public function reply(Comment $comment)
+    {
+        $comment->commentThread()->associate($this->commentThread);
+
     }
     // Has Many Through Thread
     // public function replies( )

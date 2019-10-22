@@ -18,3 +18,4 @@ yarn-error.log
 .gitattributes
 .phpunit.result.cache
 .styleci.yml
+phpunit
