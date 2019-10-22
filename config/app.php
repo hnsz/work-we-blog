@@ -175,6 +175,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+        /**
+         * MYSHIT
+         */
+        App\Providers\SeedDataServiceProvider::class,
+
     ],
 
     /*

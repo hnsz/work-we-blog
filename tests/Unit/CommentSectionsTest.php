@@ -4,17 +4,24 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Artisan;
 
 class CommentSectionsTest extends TestCase
 {
+    use DatabaseMigrations;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->seed();
+    }
     /**
-     * A basic unit test example.
-     *
-     * @return void
+     * @group first
      */
     public function testThreadStructure()
     {
+
         $post = \App\Post::find(1);
         $replies = $post->threadStarter->commentThread->replies;
         
@@ -48,6 +55,7 @@ class CommentSectionsTest extends TestCase
 
     
     }
+    
     public function testComments()
     {
         $comments = \App\Comment::all()->sortBy('id');
@@ -108,7 +116,13 @@ class CommentSectionsTest extends TestCase
 
     public function testCommentMorph()
     {
-        $this->assertTrue(true);
+        $comment = \App\Comment::find(1);
+        $threadStarter = $comment->threadStarter;
+
+        $this->assertInstanceOf(\App\ThreadStarter::class, $threadStarter);
+        $this->assertNotNull($threadStarter->commentThread);
+        $this->assertInstanceOf(\App\CommentThread::class, $threadStarter->commentThread);
+
     }
     public function testPostMorph()
     {
@@ -117,7 +131,28 @@ class CommentSectionsTest extends TestCase
 
     public function testReplyToThreadStarter()
     {
-        $this->assertTrue(true);
+        $threadStarter = \App\ThreadStarter::find(1);
+        $user = \App\User::find(8);
+        $this->assertInstanceOf(\App\ThreadStarter::class, $threadStarter);
+        $commentThread = $threadStarter->commentThread;
+        $this->assertNotNull($commentThread);
+        $this->assertInstanceOf(\App\CommentThread::class, $commentThread);
+        $this->assertCount(3, $commentThread->replies);
+        $comment = new \App\Comment(["minor_title"=>"test comment", "body"=>"this is a test comment"]);
+        $comment->user()->associate($user);
+        
+
+        // $this->expectException(\Illuminate\Database\QueryException::class);
+        // $comment->save();
+        // $this->checkExceptionExpectations();
+        $this->assertNull($comment->commentThread);
+        $threadStarter->reply($comment);
+        $commentThread->save();
+        $comment->save();
+        $this->assertInstanceOf(\App\CommentThread::class, $comment->commentThread);
+        $this->assertNotNull($comment->commentThread);
+
+        $this->assertCount(3, $commentThread->replies);
     }
     
     public function testReplyToPost()

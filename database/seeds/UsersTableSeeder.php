@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use \App\Contracts\DataProvider;
 use Carbon\Carbon;
 
 
@@ -12,7 +13,7 @@ class UsersTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(DataProvider $provider)
     {
         $this->runOnce ();
         $users  = require 'dataproviders/users.provider.php';
