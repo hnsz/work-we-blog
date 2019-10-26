@@ -1,21 +1,19 @@
 <?php
+namespace App\SeedDataProviders;
+use Illuminate\Support\Facades\Hash;
 
-namespace App\SeedDataProvider;
-use App\Contracts\SeedDataProvider\SeedDataProvider;
-
-class UserSeedDataProvider implements SeedDataProvider
+ 
+class UserSeedDataProvider 
 {
     private $generator = NULL;
 
-    public function  __construct()
+    public function  __construct(\Faker\Generator $fakerGen)
     {
-        $faker =  Faker\Factory::create();
-        $randomSeed= base64_encode(random_bytes(100));
-        $faker->seed($randomSeed);
-
-        $this->generator = $this->createGenerator($faker);
+        $randomSeed = base64_encode(random_bytes(100));
+        $fakerGen->seed($randomSeed);
+        $this->generator = $this->createGenerator($fakerGen);
     }
-    public function createGenerator($faker)
+    private function createGenerator($faker)
     {
         for($i=0; $i<10; $i++)
         {
@@ -27,12 +25,13 @@ class UserSeedDataProvider implements SeedDataProvider
             ];
         }
     }
-    public function next()
+    public function get()
     {
-        return $this->generator();
+        $data = [];
+        foreach($this->generator as $record) {
+            $data[] = $record;
+        }
+        return $data;
     }
-    public function empty()
-    {
-        return (empty($this->generator));
-    }
+
 }

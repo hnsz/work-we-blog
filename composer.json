@@ -12,6 +12,7 @@
         "balping/artisan-bash-completion": "^1.0",
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.8",
+        "hamcrest/hamcrest-php": "^2.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "nesbot/carbon": "^2.24",
@@ -40,7 +41,8 @@
         },
         "classmap": [
             "database/seeds",
-            "database/factories"
+            "database/factories",
+            "app/SeedDataProviders"
         ]
     },
     "autoload-dev": {

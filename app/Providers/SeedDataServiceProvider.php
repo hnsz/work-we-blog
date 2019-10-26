@@ -3,18 +3,18 @@
 
 namespace App\Providers;
 
-use App\Contracts\SeedDataProvider;
-use App\SeedDataProvider\UserSeedDataProvider;
+
+use App\SeedDataProviders\UserSeedDataProvider;
 use Illuminate\Support\ServiceProvider;
 
 
 class SeedDataServiceProvider extends ServiceProvider
 {
 
-    public $bindings = [
-        SeedDataProvider::class => UserSeedDataProvider::class,
+    // public $bindings = [
+    //     SeedDataProvider::class => UserSeedDataProvider::class,
         
-    ];
+    // ];
     /**
      * Register services.
      *
@@ -22,7 +22,7 @@ class SeedDataServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        parent::register();
+        
     }
 
     /**
@@ -32,6 +32,6 @@ class SeedDataServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        parent::boot();
+        $faker = \Faker\Factory::create();
     }
 }

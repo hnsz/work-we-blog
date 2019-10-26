@@ -1,5 +1,7 @@
 <?php
 
+
+
 use Illuminate\Database\Seeder;
 use \App\Contracts\DataProvider;
 use Carbon\Carbon;
@@ -16,7 +18,7 @@ class UsersTableSeeder extends Seeder
     public function run(DataProvider $provider)
     {
         $this->runOnce ();
-        $users  = require 'dataproviders/users.provider.php';
+        $users = $provider->get();
 
 
         foreach($users as $user) {
