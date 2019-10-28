@@ -5,13 +5,16 @@ use Illuminate\Support\Facades\Hash;
  
 class UserSeedDataProvider 
 {
-    private $generator = NULL;
+    private $data;
 
-    public function  __construct(\Faker\Generator $fakerGen)
+    public function  __construct(\Faker\Generator $fakerGen, $randomSeed=null)
     {
-        $randomSeed = base64_encode(random_bytes(100));
+        if(is_null($randomSeed)) {
+            $randomSeed = base64_encode(random_bytes(10));
+        }
         $fakerGen->seed($randomSeed);
-        $this->generator = $this->createGenerator($fakerGen);
+        $generator = $this->createGenerator($fakerGen);
+        $this->data = iterator_to_array($generator);
     }
     private function createGenerator($faker)
     {
@@ -20,18 +23,19 @@ class UserSeedDataProvider
             yield  [
                 "name" => $faker->username,
                 "email" => $faker->email,
-                "password" => Hash::make("welkom01"),
+                "password" => "baddpassword123",
                 "created_at" => $faker->dateTimeBetween($startDate = '-2 year', $enddate ='now'),
             ];
         }
     }
+    public function json()
+    {
+        return json_encode($this->data);
+    }
+
     public function get()
     {
-        $data = [];
-        foreach($this->generator as $record) {
-            $data[] = $record;
-        }
-        return $data;
+        return $this->data;
     }
 
 }

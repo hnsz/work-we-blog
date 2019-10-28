@@ -7,6 +7,8 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 use Tests\TestCase;
 use Faker\Factory;
+use Hamcrest\Matcher;
+use Hamcrest\Matchers;
 
 /**
  * @group dataprovider
@@ -18,6 +20,14 @@ class UserSeedDataProviderTest extends TestCase
     /**
      * 
      */
+    public function classUTGetInstance($rngSeed=null)
+    {
+       return new \App\SeedDataProviders\UserSeedDataProvider(\Faker\Factory::create(), $rngSeed);
+    }
+    public function classUTClassName()
+    {
+        return \App\SeedDataProviders\UserSeedDataProvider::class;
+    }
     public function setUp(): void
     {
         parent::setUp();
@@ -30,20 +40,19 @@ class UserSeedDataProviderTest extends TestCase
     }
     public function testInstantiate()
     {
-        $class = \App\SeedDataProviders\UserSeedDataProvider::class;
+        $class = $this->classUTClassName();
         $this->assertTrue(class_exists($class),  "{$class} not loaded.");
 
-        $datProv = new \App\SeedDataProviders\UserSeedDataProvider(\Faker\Factory::create());
-        $this->assertNotNull($datProv);
-
-        return $datProv;
+        $dataProv = $this->classUTGetInstance();
+        $this->assertNotNull($dataProv);
+        return $dataProv;
     }
     /**
      * @depends testInstantiate
      */
-    public function testOutput($datProv)
+    public function testOutput($dataProv)
     {
-        $data = $datProv->get();
+        $data = $dataProv->get();
         
         $this->assertIsArray($data);
         $this->assertCount(10,$data);
@@ -68,27 +77,46 @@ class UserSeedDataProviderTest extends TestCase
             },
             true
         );
+        $json = $dataProv->json();
+        $this->assertJson($json);
+        $this->assertCount(count($data), json_decode($json));
+        
+
 
         $this->assertTrue($fieldNamesOk);
-                
     }
-    /**
+    public function testCallGetTwiceSameData()
+    {
+        $dataProv = $this->classUTGetInstance();
+        $dataCall1 = $dataProv->get();
+        
+        $dataCall2 = $dataProv->get();
+
+        $this->assertEqualsCanonicalizing($dataCall1,$dataCall2);
+
+    }
+     /**
      * @depends testOutput
      */
-    public function testSimilarity()
+    public function testFixedRandomSeed()
     {
-        // print_r($data);
-        $datProv = new \App\SeedDataProviders\UserSeedDataProvider(\Faker\Factory::create());
-        $output = $datProv->get();
-        $json = json_encode($output);
-        $this->assertString();
-        $hash = \Hash::make($json);
+        $rngSeed = base64_encode(random_bytes(10));
         echo "\n";
-        
-        var_dump($hash);
+        print_r($rngSeed);
+        $slightlyDifferentRngSeed = substr($rngSeed, 0, strlen($rngSeed) -2);
 
+        
+        $dataI1 = $this->classUTGetInstance($rngSeed)->get();
+        $dataI2 = $this->classUTGetInstance($rngSeed)->get();
+        $this->assertNotEquals($rngSeed, $slightlyDifferentRngSeed);
+        $dataI3 = $this->classUTGetInstance($slightlyDifferentRngSeed)->get();
+
+
+        $this->assertEquals($dataI1, $dataI2);
+
+        $this->assertNotEquals($dataI1, $dataI3);
+        
         $this->assertTrue(true);
     }
-
-
 }
+ 

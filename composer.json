@@ -12,6 +12,7 @@
         "balping/artisan-bash-completion": "^1.0",
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.8",
+        "garethellis/hamcrest-matchers": "^2.2",
         "hamcrest/hamcrest-php": "^2.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
