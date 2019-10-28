@@ -81,8 +81,10 @@ class UserSeedDataProviderTest extends TestCase
         $datProv = new \App\SeedDataProviders\UserSeedDataProvider(\Faker\Factory::create());
         $output = $datProv->get();
         $json = json_encode($output);
+        $this->assertString();
         $hash = \Hash::make($json);
         echo "\n";
+        
         var_dump($hash);
 
         $this->assertTrue(true);
