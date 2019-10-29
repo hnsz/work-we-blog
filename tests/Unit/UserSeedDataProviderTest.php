@@ -118,5 +118,32 @@ class UserSeedDataProviderTest extends TestCase
         
         $this->assertTrue(true);
     }
+    
+    public function testPersistentStore()
+    {
+
+    }
+    
+    public function testPersistentRead()
+    {
+
+    
+    }
+    public function testCacheStore()
+    {
+        
+    }
+    public function testCacheRetrieve()
+    {
+
+    }
+    public function testCacheInvalidate()
+    {
+
+    }
+    public function testWriteFail()
+    {
+
+    }
 }
  
