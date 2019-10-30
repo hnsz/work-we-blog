@@ -9,6 +9,7 @@ use Tests\TestCase;
 use Faker\Factory;
 use Hamcrest\Matcher;
 use Hamcrest\Matchers;
+use Illuminate\Contracts\Cache;
 
 /**
  * @group dataprovider
@@ -103,20 +104,27 @@ class UserSeedDataProviderTest extends TestCase
         $rngSeed = base64_encode(random_bytes(10));
         echo "\n";
         print_r($rngSeed);
-        $slightlyDifferentRngSeed = substr($rngSeed, 0, strlen($rngSeed) -2);
+        
 
         
         $dataI1 = $this->classUTGetInstance($rngSeed)->get();
         $dataI2 = $this->classUTGetInstance($rngSeed)->get();
-        $this->assertNotEquals($rngSeed, $slightlyDifferentRngSeed);
-        $dataI3 = $this->classUTGetInstance($slightlyDifferentRngSeed)->get();
-
-
         $this->assertEquals($dataI1, $dataI2);
 
+
+        $slightlyDifferentRngSeed = substr($rngSeed, 0, strlen($rngSeed) - 1);
+        
+        $this->assertNotEquals($rngSeed, $slightlyDifferentRngSeed);
+        $dataI3 = $this->classUTGetInstance($slightlyDifferentRngSeed)->json();
         $this->assertNotEquals($dataI1, $dataI3);
         
         $this->assertTrue(true);
+    }
+    public function testFileStore()
+    {
+        $SeedProv = $this->classUTClassName(Cache\Factory('FileStore'));
+        $SeedProv::withCache( FileStore() );
+
     }
 }
  

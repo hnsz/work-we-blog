@@ -1,12 +1,18 @@
 <?php
 namespace App\SeedDataProviders;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Cache\FileStore;
  
 class UserSeedDataProvider 
 {
     private $data;
+    private static $cache;
 
+    public static final function withCache(FileStore $cache)
+    {
+        self::$cache = $cache;
+        return self;
+    }
     public function  __construct(\Faker\Generator $fakerGen, $randomSeed=null)
     {
         if(is_null($randomSeed)) {
