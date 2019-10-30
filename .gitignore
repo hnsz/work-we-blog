@@ -18,3 +18,5 @@ yarn-error.log
 .gitattributes
 .phpunit.result.cache
 .styleci.yml
+project_files/.vscode
+phpunit
