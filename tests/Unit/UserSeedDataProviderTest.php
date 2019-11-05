@@ -10,6 +10,11 @@ use Faker;
 
 
 use Illuminate\Contracts\Cache;
+use ReflectionObject;
+use ReflectionProperty;
+use ReflectionMethod;
+use ReflectionGenerator;
+
 
 /**
  * @group dataprovider
@@ -38,8 +43,9 @@ class UserSeedDataProviderTest extends TestCase
          * Dont call it, you're testing it.
          *  $this->seed();
          **/
-        
+
     }
+
     public function testInstantiate()
     {
         $class = $this->classUTClassName();
@@ -52,10 +58,29 @@ class UserSeedDataProviderTest extends TestCase
     /**
      * @depends testInstantiate
      */
+    public function testGenerator()
+    {
+        $instance = $this->classUTGetInstance();
+        $refobject = new ReflectionObject($instance);
+
+        // $reflect = new \ReflectionClass();
+        /*
+        $refmethod = $refobject->getMethod("generator");
+        $refmethod->setAccessible(true);
+        $refprop = $refobject->getProperty('faker');
+        $refprop->setAccessible(true);
+        $result = $refmethod->invoke($instance, $refprop->getValue($instance));
+        */
+        print_r($result);
+    }
+    /**
+     * @depends testGenerator
+     */
     public function testOutput($dataProv)
     {
         $data = $dataProv->get();
-        
+
+        return;
         $this->assertIsArray($data);
         $this->assertCount(10,$data);
         $this->assertEquals(range(0,9), array_keys($data));
@@ -83,10 +108,13 @@ class UserSeedDataProviderTest extends TestCase
         $this->assertJson($json);
         $this->assertCount(count($data), json_decode($json));
         
-
-
         $this->assertTrue($fieldNamesOk);
     }
+    /**
+     * @depends testGenerator
+     *
+     * @return void
+     */
     public function testCallGetTwiceSameData()
     {
         $dataProv = $this->classUTGetInstance();
@@ -103,25 +131,21 @@ class UserSeedDataProviderTest extends TestCase
     public function testFixedRandomSeed()
     {
         $rngSeed = base64_encode(random_bytes(10));
-        
-        
-
+        $slightlyDifferentRngSeed = substr($rngSeed, 0, strlen($rngSeed) - 1);
         
         $dataI1 = $this->classUTGetInstance($rngSeed)->get();
         $dataI2 = $this->classUTGetInstance($rngSeed)->get();
         $this->assertEquals($dataI1, $dataI2);
         $dataI3 = $this->classUTGetInstance($slightlyDifferentRngSeed)->json();
 
-
-        $slightlyDifferentRngSeed = substr($rngSeed, 0, strlen($rngSeed) - 1);
         
         $this->assertNotEquals($rngSeed, $slightlyDifferentRngSeed);
-        $dataI3 = $this->classUTGetInstance($slightlyDifferentRngSeed)->json();
         $this->assertNotEquals($dataI1, $dataI3);
         
-        $this->assertTrue(true);
     }
-    
+    /**
+     *  @depends testFixedRandomSeed
+     */
     public function testInstantiateWithCache()
     {
         $rngseed = 'lkjlkj';       
@@ -130,14 +154,8 @@ class UserSeedDataProviderTest extends TestCase
         $class::setCache(\Cache::store('file'));
         $userSDProv = $this->classUTGetInstance($rngseed);
 
-
         $json = $userSDProv->json();
         $this->assertNotEmpty($json);
-
-        
-
-
-        
     }
     /**
      * @doesNotPerformAssertions
