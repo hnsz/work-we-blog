@@ -80,7 +80,6 @@ class UserSeedDataProviderTest extends TestCase
     {
         $data = $dataProv->get();
 
-        return;
         $this->assertIsArray($data);
         $this->assertCount(10,$data);
         $this->assertEquals(range(0,9), array_keys($data));
@@ -157,7 +156,7 @@ class UserSeedDataProviderTest extends TestCase
         $json = $userSDProv->json();
         $this->assertNotEmpty($json);
     }
-    /**
+    /** 
      * @doesNotPerformAssertions
      */
     public function testCacheStore()
