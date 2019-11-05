@@ -17,7 +17,7 @@ class CachedSeedDataProvider implements SeedDataProvider
         
         $this->cache = $cache;
         $this->sdprov = $sdprov;
-        dd(last(explode("\\", get_class($this->sdprov))) .".". $sdprov->rngSeed);
+        
     }
     private function cacheSet() //update?
     {

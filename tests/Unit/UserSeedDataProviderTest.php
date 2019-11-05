@@ -4,6 +4,8 @@ namespace Tests\Unit;
 
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Cache\CacheManager;
+
 
 use Tests\TestCase;
 use Faker;
@@ -157,6 +159,52 @@ class UserSeedDataProviderTest extends TestCase
         $this->assertNotEmpty($json);
     }
     /** 
+     * @doesNotPerformAssertions
+     */
+    public function testCacheStore()
+    {
+              
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testCacheRetrieve()
+    {
+
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testCacheInvalidate()
+    {
+
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testWriteFail()
+    {
+
+    }
+    
+    public function testInstantiateWithCache()
+    {
+        $rngseed = 'lkjlkj';       
+        
+        $class = $this->classUTClassName();
+        $class::setCache(\Cache::store('file'));
+        $userSDProv = $this->classUTGetInstance($rngseed);
+
+
+        $json = $userSDProv->json();
+        $this->assertNotEmpty($json);
+
+        
+
+
+        
+    }
+    /**
      * @doesNotPerformAssertions
      */
     public function testCacheStore()
