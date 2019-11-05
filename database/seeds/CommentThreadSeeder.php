@@ -37,7 +37,8 @@ class CommentThreadSeeder extends Seeder
 
         $thread = $starter->commentThread()->create();
 
-            
+        $starter->save();
+        $thread->save();    
         $users = App\User::all()->where('id','!=',1)->random(5);
         
         $replies = [
@@ -50,7 +51,7 @@ class CommentThreadSeeder extends Seeder
             'next_stage' => [
                     'body' => "hElLo nIcE St0rY..",
                     'minor_title' => 'lol xd',
-                    'comment_thread_id' => $thread->id
+                    'comment_thread_id' => -1
                 ],
             ],
             [
@@ -68,47 +69,40 @@ class CommentThreadSeeder extends Seeder
                 'comment_thread_id' => $thread->id
                 ],
             'next_stage' => [
-                'body' => "You are man. Nostalgia. Brings tears to my eyes.",
+                'body' => "You are man. Nostalgia. This brings tears to my eyes.",
                 'minor_title' => 'none',
-                'comment_thread_id' => $thread->id
+                'comment_thread_id' => -1
                 ],                 
             ],
         
         ];
 
 
-        while($reply = array_pop($replies)) {
+        while($reply = array_shift($replies)) {
             $init_list = $reply['current_stage'];
             $user = $users->pop();
 
             $comment = $user->comments()->create($init_list);
-            $comment->commentThread()->associate($thread);
             $threadStarter_next_stage = $comment->threadStarter()->create();
             $comment->save();
             $user->save();
             
             if (!empty($reply['next_stage'])) {
                 $thread_next_stage = $threadStarter_next_stage->commentThread()->create();
+                $threadStarter_next_stage->save();
                 $thread_next_stage->save();
                 $reply['next_stage']['comment_thread_id'] = $thread_next_stage->id;
                 $next['current_stage'] = $reply['next_stage'];
                 $next['next_stage'] = [];
-                array_unshift($replies, $next);
+                /**
+                 * and further
+                 * stage-2 => next_stage
+                 * stage-n => stage-(n-1)
+                 */
+                array_push($replies, $next);
             }
             
         }
-        
-                
-        
-                
-        $starter->save();
-        $thread->save();
-        
-        
-    
-                // $generator = \Faker\Factory::create();
-                // $populator = \Faker\ORM\Propel\Populator($generator);
-                // $populator->addEntity();
     }
 
 }

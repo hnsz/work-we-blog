@@ -175,6 +175,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+        /**
+         * MYSHIT
+         */
+        App\Providers\SeedDataServiceProvider::class,
+        
     ],
 
     /*
@@ -226,6 +232,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+
+        // 'UserSeedData' => \App\SeedDataProviders\UserSeedDataProvider::class,
     ],
 
 ];
