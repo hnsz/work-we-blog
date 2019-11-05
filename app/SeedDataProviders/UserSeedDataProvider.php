@@ -46,7 +46,7 @@ class UserSeedDataProvider implements SeedDataProvider
                     ];
                 }
             },
-            $this->fakerGen);ls -a
+            $this->fakerGen);
             
         $this->data = iterator_to_array($generator);
     }
