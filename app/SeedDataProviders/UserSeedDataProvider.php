@@ -10,7 +10,6 @@ class UserSeedDataProvider implements SeedDataProvider
     public $rngSeed;
     private $data;
     private static $cache;
-    }
 
     public function  __construct(\Faker\Generator $fakerGen, $randomSeed=null)
     {
@@ -37,18 +36,17 @@ class UserSeedDataProvider implements SeedDataProvider
                         "created_at" => $faker->dateTimeBetween($startDate = '-2 year', $enddate ='now'),
                     ];
                 }
-            },
-            $this->fakerGen);
+       
             
-        $this->data = iterator_to_array($generator);
+
     }
     public function json()
     {
-        return json_encode($this->get());
+        return json_encode($this->generator($this->faker));
     }
 
     public function get()
-    {
+    {        
         return $this->generator($this->faker);
         
     }
