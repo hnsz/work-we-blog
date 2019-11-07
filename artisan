@@ -13,11 +13,32 @@ define('LARAVEL_START', microtime(true));
 | into the script here so that we do not have to worry about the
 | loading of any our classes "manually". Feels great to relax.
 |
-*/
+ */
+/**
+ * fuck windows, stop hurting yourself with that piece of toss
+ * smp linux ftw
+ */
+$path = explode('/', __DIR__);
+/**
+ * fn($y, $x) => { }
+ */
+$cumulative = array_reduce($path,
+			function ($y, $x) {
+				$y[] = implode('/', [end($y), $x]);
+				return $y;
+			},
+			[]);
+foreach(array_reverse($cumulative) as $path) {
+	if(file_exists($path."/.env")) {
 
-require __DIR__.'/vendor/autoload.php';
+		define ( '__APPBASE__', $path);
+		break;
+	}
+}
 
-$app = require_once __DIR__.'/bootstrap/app.php';
+require __APPBASE__.'/vendor/autoload.php';
+
+$app = require_once __APPBASE__.'/bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------
