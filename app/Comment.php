@@ -16,7 +16,8 @@ class Comment extends Model
 /**
  * @delete
  * DELETE THIS COMMENT
- * 'user_id', 'comment_thread_id'
+ * 'user_id', 'comme
+ * nt_thread_id'
  *  'user_id' => $user_id,             
  *   'comment_thread_id' => $comment_thread_id];
  * Dit kan niet in de constructor
@@ -27,7 +28,7 @@ class Comment extends Model
  */
     public function threadStarter()
     {
-         return $this->morphOne('App\ThreadStarter', 'replyable');
+         return $this->morphOne('App\ThreadStarter', 'replyable')->withDefault();
     }
 
     public function commentThread()

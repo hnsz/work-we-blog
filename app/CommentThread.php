@@ -12,11 +12,11 @@ class CommentThread extends Model
 
     public function threadStarter()
     {
-        return $this->belongsTo('App\ThreadStarter');
+        return $this->hasOne('\App\ThreadStarter');
     }
     public function replies()
     {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('\App\Comment');
     }
 }
 

@@ -16,7 +16,7 @@ class Post extends Model
     public function threadStarter()
     
     {
-        return $this->morphOne('App\ThreadStarter', 'replyable');
+        return $this->morphOne('App\ThreadStarter', 'replyable')->withDefault();
     }
 
     public function user()
