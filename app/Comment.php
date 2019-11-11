@@ -11,13 +11,12 @@ class Comment extends Model
 {
     use SoftDeletes;
         protected $fillable = [
-        'minor_title', 'body'
+        'title', 'body'
     ];
 /**
  * @delete
  * DELETE THIS COMMENT
- * 'user_id', 'comme
- * nt_thread_id'
+ * 'user_id', 'comment_thread_id'
  *  'user_id' => $user_id,             
  *   'comment_thread_id' => $comment_thread_id];
  * Dit kan niet in de constructor

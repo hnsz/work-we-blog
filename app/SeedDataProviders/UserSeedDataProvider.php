@@ -10,13 +10,6 @@ class UserSeedDataProvider implements SeedDataProvider
     public $rngSeed;
     private $data;
     private static $cache;
-    
-
-    final public static function setCache(Cache\Repository $cache)
-    {
-        static::$cache = $cache;
-        return static::class;
-    }
 
     public function  __construct(\Faker\Generator $fakerGen, $randomSeed=null)
     {
@@ -26,6 +19,7 @@ class UserSeedDataProvider implements SeedDataProvider
         }
         $this->rngSeed = $randomSeed;
         $fakerGen->seed($randomSeed);
+        $this->faker = $fakerGen;
         $this->fakerGen = $fakerGen;
 
         if(self::$cache) {
@@ -33,11 +27,8 @@ class UserSeedDataProvider implements SeedDataProvider
         }
     }
 
-    private function generateData()
-    {
-        $generator = call_user_func(function ($faker) {
-                for($i=0; $i<10; $i++)
-                {
+    private function generator ($faker) {
+        for($i=0; $i<10; $i++) {
                     yield  [
                         "name" => $faker->username,
                         "email" => $faker->email,
@@ -45,19 +36,19 @@ class UserSeedDataProvider implements SeedDataProvider
                         "created_at" => $faker->dateTimeBetween($startDate = '-2 year', $enddate ='now'),
                     ];
                 }
-            },
-            $this->fakerGen);
+       
             
-        $this->data = iterator_to_array($generator);
+
     }
     public function json()
     {
-        return json_encode($this->data);
+        return json_encode($this->generator($this->faker));
     }
 
     public function get()
-    {
-        return $this->data;
+    {        
+        return $this->generator($this->faker);
+        
     }
 
 }
