@@ -11,7 +11,7 @@ class Comment extends Model
 {
     use SoftDeletes;
         protected $fillable = [
-        'minor_title', 'body'
+        'title', 'body'
     ];
 /**
  * @delete

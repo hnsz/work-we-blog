@@ -11,6 +11,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
  */
 class CommentTest extends TestCase
 {
+
     /**
      * 
      * @return void
@@ -18,14 +19,12 @@ class CommentTest extends TestCase
      */
     public function testInstantiate ($title, $body)
     {
-
-
-        $init = [   'minor_title' => $title,
+        $init = [   'title' => $title,
                     'body' => $body,
                 ];
         $comment = new \App\Comment($init);
         $this->assertInstanceOf(\App\Comment::class, $comment);
-        $this->assertEquals($title, $comment->minor_title);
+        $this->assertEquals($title, $comment->title);
         $this->assertEquals($body, $comment->body);
     }
         /**
@@ -34,18 +33,21 @@ class CommentTest extends TestCase
         * But in a specific context
         *
         */
-    public function testReplyToUserInContext($sender,$receiver, $context)
+    public function testReplyToUserInContext($sender=null,$receiver=null, $context=null)
     {
         $this->assertTrue(true);
     }
+    /** @dataProvider provideComment */
     public function testReplyToComment($comment)
     {
         $this->assertTrue(true);
     }
+    /** @dataProvider provideComment */
     public function testReplyToPost($comment)
     {
         $this->assertTrue(true);
     }
+    /** @dataProvider provideComment */
     public function testReplyToThreadStarter($comment)
     {
         $this->assertTrue(true);
@@ -54,6 +56,13 @@ class CommentTest extends TestCase
     {
         $this->assertTrue(true);
 
+    }
+    /**
+     * @return \App\Comment
+     */
+    public function provideComment($title='sporks', $body='asdas ')
+    {
+        return new \App\Comment([$title, $body]);
     }
     /**
      * return Array
