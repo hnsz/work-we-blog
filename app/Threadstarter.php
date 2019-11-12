@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use \App\Comment;
-use \App\CommentThread;
+use \App\Commentthread;
 
 
-class ThreadStarter extends Model
+class Threadstarter extends Model
 {
     protected $fillable = [
 
@@ -16,13 +16,13 @@ class ThreadStarter extends Model
     {
         return $this->morphTo();
     }
-    public function commentThread()
+    public function commentthread()
     {
-        return $this->hasOne('App\CommentThread');
+        return $this->belongsTo('\App\Commentthread')->withDefault();
     }
     public function reply(Comment $comment)
     {
-        $comment->commentThread()->associate($this->commentThread);
+        $comment->commentthread()->associate($this->commentthread);
 
     }
     // Has Many Through Thread
