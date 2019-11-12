@@ -78,21 +78,20 @@ class CommentTest extends TestCase
          */
 
         $this->artisan('migrate:fresh');
-        $user = new \App\User(["name"=>"asd","email"=>"asdsad@aswdsadasda.nl","password"=>"asdasdas"]);
+        $user = new \App\User(["name"=>"asd","email"=>"asdsad@dasda.nl","password"=>"asdasdas"]);
         $user->save();
         
         $replyablePost = $user->posts()->create(["title"=>"Anything that starts with 'too' is bad.",
                                         "body"=>"As the title said, discuss.."]);
         
+                                        
+        $starter = $replyablePost->threadstarter()->create();
+        $thread = new \App\Commentthread();
         
-        $starter = $replyablePost->threadstarter;
-        $this->assertFalse($starter->wasRecentlyCreated);
-        
-        $thread = \App\Commentthread::create();
-        $thread->threadstarter()->save($starter);
-
-        $this->assertTrue($thread->wasRecentlyCreated);
         $this->assertTrue($starter->wasRecentlyCreated);
+        $this->assertFalse($thread->wasRecentlyCreated);
+        $starter->commentthread()->save($thread);
+        $this->assertTrue($thread->wasRecentlyCreated);
         
 
 

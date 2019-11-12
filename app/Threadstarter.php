@@ -18,7 +18,7 @@ class Threadstarter extends Model
     }
     public function commentthread()
     {
-        return $this->belongsTo('\App\Commentthread')->withDefault();
+        return $this->hasOne('\App\Commentthread');
     }
     public function reply(Comment $comment)
     {

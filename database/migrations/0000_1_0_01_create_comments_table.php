@@ -23,10 +23,6 @@ class CreateCommentsTable extends Migration
             $table->softDeletes();
         });
 
-            
-
-
-
     }
 
 
