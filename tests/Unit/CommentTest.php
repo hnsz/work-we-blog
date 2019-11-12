@@ -13,7 +13,6 @@ class CommentTest extends TestCase
 {
 
     /**
-     * 
      * @return void
      * @dataProvider commentInitListProvider
      */
@@ -59,17 +58,53 @@ class CommentTest extends TestCase
      */
     public function testAssociateCommentWithThread()
     {
-        $replyable = new \App\Post(["title"=>"Anything that starts with too is bad.","body"=>"As the title said, discuss.."]);
-        //$this->assertNull($replyable->threadstarter);
-        $starter =  $replyable->threadStarter;
-        $this->assertInstanceOf(\App\ThreadStarter::class, $starter);
+        /** you save any replyable to
+         *  or create it on
+         *  an existing user 
+         * if you don't you dont have an id
+         * */
+
+        /**
+         * An object only has a foreign key it is created or withDefault
+         * on another object. That object must have been saved already
+         * 
+         * You can save an object without a foreign key on a relation 
+         * and it will receive the foreign key;
+         * 
+         * 
+         * you can get a default 
+         * but you must have saved the
+         * 
+         */
+
+        $this->artisan('migrate:fresh');
+        $user = new \App\User(["name"=>"asd","email"=>"asdsad@aswdsadasda.nl","password"=>"asdasdas"]);
+        $user->save();
         
-        $threadStarter = new \App\ThreadStarter();
-        /**Should always return a thread (withDefault) */
-        $thread = $threadStarter->commentThread;
-        $this->assertInstanceOf(\App\CommentThread::class, $thread);
+        $replyablePost = $user->posts()->create(["title"=>"Anything that starts with 'too' is bad.",
+                                        "body"=>"As the title said, discuss.."]);
+        
+        
+        $starter = $replyablePost->threadstarter;
+        $this->assertFalse($starter->wasRecentlyCreated);
+        
+        $thread = \App\Commentthread::create();
+        $thread->threadstarter()->save($starter);
+
+        $this->assertTrue($thread->wasRecentlyCreated);
+        $this->assertTrue($starter->wasRecentlyCreated);
         
 
+
+        
+        
+
+
+        
+        
+        // $thread->push();
+        
+        
     }
     /**
      * hasOneThrough
@@ -87,27 +122,27 @@ class CommentTest extends TestCase
     {
         $this->assertTrue(true);
     }
-    /** @dataProvider provideComment */
-    public function testReplyToComment($comment)
-    {
-        $this->assertTrue(true);
-    }
-    /** @dataProvider provideComment */
-    public function testReplyToPost($comment)
-    {
-        $this->assertTrue(true);
-    }
-    /** @dataProvider provideComment */
-    public function testReplyToThreadStarter($comment)
-    {
-        $this->assertTrue(true);
-    }
+    // /** @dataProvider provideComment */
+    // public function testReplyToComment($comment)
+    // {
+    //     $this->assertTrue(true);
+    // }
+    // /** @dataProvider provideComment */
+    // public function testReplyToPost($comment)
+    // {
+    //     $this->assertTrue(true);
+    // }
+    // /** @dataProvider provideComment */
+    // public function testReplyToThreadStarter($comment)
+    // {
+    //     $this->assertTrue(true);
+    // }
     public function testThreadHasManyThoughStarter()
     {
         $this->assertTrue(true);
 
     }
-    */
+
     /**
      * @return \App\Comment
      */
@@ -125,9 +160,7 @@ class CommentTest extends TestCase
             "This is the most ill-informed story I have ever read. what is this website coming to.",
             ],
         ];
-        
         return $data;
-        
     }
     
 }

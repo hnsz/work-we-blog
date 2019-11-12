@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title', 25);
             $table->text('body');
-            $table->unsignedBigInteger('comment_thread_id');    //FK
+            $table->unsignedBigInteger('commentthread_id');    //FK
             $table->unsignedBigInteger('user_id');  //FK
             $table->timestamps();
             $table->softDeletes();

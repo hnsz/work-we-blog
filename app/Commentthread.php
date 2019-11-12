@@ -4,15 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CommentThread extends Model
+class Commentthread extends Model
 {
     protected $fillable = [ 
-        'thread_starter_id'
+        
     ];
 
-    public function threadStarter()
+    public function threadstarter()
     {
-        return $this->hasOne('\App\ThreadStarter');
+        return $this->hasOne('\App\Threadstarter');
     }
     public function replies()
     {
