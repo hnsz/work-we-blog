@@ -6,12 +6,38 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
+
 /**
  * @group comment
  */
 class CommentTest extends TestCase
 {
+    /**
+     * @dataProvider commentInitListProvider
+     *
+     * @return void
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+        $data = [ 
+            ["OP sucks",
+            "This is the most ill-informed story I have ever read. what is this website coming to.",
+            ],
+        ];
+        $headers = ["Content-type" => "application/json"];
+        $this->json('post','/comment/async',json_encode($data,JSON_PRETTY_PRINT)
+        // $this->post("/comment",$data, $headers);
+    }
+    public function testRequest()
+    {
+        
+        $r = request();
+        dd($r);
+        dd($r->except(['qwe']));
 
+
+    }
     /**
      * @return void
      * @dataProvider commentInitListProvider
@@ -27,18 +53,6 @@ class CommentTest extends TestCase
         $this->assertEquals($body, $comment->body);
     }
     /**
-     * comment create 
-     * user->comments()->save(comment)
-     *
-     * commment threadstarter()
-     *      morphOne App\ThreadStarter replyable
-     * 
-     * comment replies()
-     *      morphOne App\ThreadStarter replyable 
-     *  or
-     *      morphOne App\CommentThread replyable
-     *  or
-     *      morphOne App\Replies replyable
      * Dilemma being: reply to comment, reply to thread, reply as relation controlled outside of model 
      *  or as action on the model itself where is curates its own thread/replies
      *  or does it delegate to a thread
@@ -53,37 +67,16 @@ class CommentTest extends TestCase
      * 
      * threadstarter 
      *      belongsto commentthread withdefault
-     * 
      * threadstarter->thread->replies()->save(comment)
      */
     public function testAssociateCommentWithThread()
     {
-        /** you save any replyable to
-         *  or create it on
-         *  an existing user 
-         * if you don't you dont have an id
-         * */
-
-        /**
-         * An object only has a foreign key it is created or withDefault
-         * on another object. That object must have been saved already
-         * 
-         * You can save an object without a foreign key on a relation 
-         * and it will receive the foreign key;
-         * 
-         * 
-         * you can get a default 
-         * but you must have saved the
-         * 
-         */
-
         $this->artisan('migrate:fresh');
         $user = new \App\User(["name"=>"asd","email"=>"asdsad@dasda.nl","password"=>"asdasdas"]);
         $user->save();
         
         $replyablePost = $user->posts()->create(["title"=>"Anything that starts with 'too' is bad.",
                                         "body"=>"As the title said, discuss.."]);
-        
                                         
         $starter = $replyablePost->threadstarter()->create();
         $thread = new \App\Commentthread();
@@ -92,31 +85,8 @@ class CommentTest extends TestCase
         $this->assertFalse($thread->wasRecentlyCreated);
         $starter->commentthread()->save($thread);
         $this->assertTrue($thread->wasRecentlyCreated);
-        
-
-
-        
-        
-
-
-        
-        
         // $thread->push();
-        
-        
     }
-    /**
-     * hasOneThrough
-     *    is return threadstarter->thread
-     */
-
-
-        /**
-        * Could say a comment is between two users.
-        * Like a message.
-        * But in a specific context
-        *
-        */
     public function testReplyToUserInContext($sender=null,$receiver=null, $context=null)
     {
         $this->assertTrue(true);
