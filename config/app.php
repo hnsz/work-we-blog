@@ -180,6 +180,7 @@ return [
          * MYSHIT
          */
         App\Providers\SeedDataServiceProvider::class,
+        App\Providers\RequestProvider::class,
         
     ],
 

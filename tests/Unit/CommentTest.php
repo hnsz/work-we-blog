@@ -20,24 +20,9 @@ class CommentTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $data = [ 
-            ["OP sucks",
-            "This is the most ill-informed story I have ever read. what is this website coming to.",
-            ],
-        ];
-        $headers = ["Content-type" => "application/json"];
-        $this->json('post','/comment/async',json_encode($data,JSON_PRETTY_PRINT)
-        // $this->post("/comment",$data, $headers);
-    }
-    public function testRequest()
-    {
-        
-        $r = request();
-        dd($r);
-        dd($r->except(['qwe']));
-
 
     }
+ 
     /**
      * @return void
      * @dataProvider commentInitListProvider
