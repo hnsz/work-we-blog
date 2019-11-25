@@ -13,7 +13,7 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        $posts = require 'dataproviders/posts.provider.php';    
+        $posts = require __DIR__ . '/seeddataprovider/posts.provider.php';    
         
         /** 
          *      Constraints (should be checked)

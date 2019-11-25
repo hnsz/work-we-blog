@@ -3,7 +3,7 @@
 
 namespace App\Providers;
 
-
+use App\Contracts\SeedDataProvider;
 use App\SeedDataProviders\UserSeedDataProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -11,10 +11,10 @@ use Illuminate\Support\ServiceProvider;
 class SeedDataServiceProvider extends ServiceProvider
 {
 
-    // public $bindings = [
-    //     SeedDataProvider::class => UserSeedDataProvider::class,
+     public $bindings = [
+         SeedDataProvider::class => UserSeedDataProvider::class,
         
-    // ];
+     ];
     /**
      * Register services.
      *

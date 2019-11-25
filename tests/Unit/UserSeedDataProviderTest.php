@@ -9,8 +9,7 @@ use Illuminate\Cache\CacheManager;
 
 use Tests\TestCase;
 use Faker;
-
-
+use Generator;
 use Illuminate\Contracts\Cache;
 use ReflectionObject;
 use ReflectionProperty;
@@ -65,22 +64,23 @@ class UserSeedDataProviderTest extends TestCase
         $instance = $this->classUTGetInstance();
         $refobject = new ReflectionObject($instance);
 
-        // $reflect = new \ReflectionClass();
-        /*
+        
+        
         $refmethod = $refobject->getMethod("generator");
         $refmethod->setAccessible(true);
         $refprop = $refobject->getProperty('faker');
         $refprop->setAccessible(true);
         $result = $refmethod->invoke($instance, $refprop->getValue($instance));
-        */
-     
+
+        $this->assertinstanceOf(Generator::class, $result);
+        return $instance;
     }
     /**
      * @depends testGenerator
      */
     public function testOutput($dataProv)
     {
-        $data = $dataProv->get();
+        $data = iterator_to_array( $dataProv->get());
 
         $this->assertIsArray($data);
         $this->assertCount(10,$data);
@@ -152,7 +152,7 @@ class UserSeedDataProviderTest extends TestCase
         $rngseed = 'lkjlkj';       
         
         $class = $this->classUTClassName();
-        $class::setCache(\Cache::store('file'));
+        
         $userSDProv = $this->classUTGetInstance($rngseed);
 
         $json = $userSDProv->json();

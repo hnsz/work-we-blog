@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Requests\CommentReply;
 use Illuminate\Support\ServiceProvider;
 
 class RequestProvider extends ServiceProvider
@@ -13,9 +14,14 @@ class RequestProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->when(\App\Http\Controllers\ReplyableController::class)
-                ->needs(\App\Http\Requests\CommentReply::class)
-                ->give(new \App\Http\Requests\CommentReply());
+        $this->app->instance(CommentReply::class, new CommentReply());
+    }
+    public function provides()
+    {
+
+        return [
+            CommentReply::class,
+        ];
     }
 
     /**

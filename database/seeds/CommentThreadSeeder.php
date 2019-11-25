@@ -45,33 +45,33 @@ class CommentThreadSeeder extends Seeder
             [
             'current_stage' => [
                 'body' => "hello nice story",
-                'minor_title' => 'none',
-                'comment_thread_id' => $thread->id
+                'title' => 'none',
+                'commentthread_id' => $thread->id
                 ],
             'next_stage' => [
                     'body' => "hElLo nIcE St0rY..",
-                    'minor_title' => 'lol xd',
-                    'comment_thread_id' => -1
+                    'title' => 'lol xd',
+                    'commentthread_id' => -1
                 ],
             ],
             [
             'current_stage' => [
                 'body' => "loved this, thanks",
-                'minor_title' => 'none',
-                'comment_thread_id' => $thread->id
+                'title' => 'none',
+                'commentthread_id' => $thread->id
                 ],
             'next_stage' => [],
             ],
             [
             'current_stage' => [
                 'body' => "Totally recognisable. Amirite?!",
-                'minor_title' => 'none',
-                'comment_thread_id' => $thread->id
+                'title' => 'none',
+                'commentthread_id' => $thread->id
                 ],
             'next_stage' => [
                 'body' => "You are man. Nostalgia. This brings tears to my eyes.",
-                'minor_title' => 'none',
-                'comment_thread_id' => -1
+                'title' => 'none',
+                'commentthread_id' => -1
                 ],                 
             ],
         
@@ -91,7 +91,7 @@ class CommentThreadSeeder extends Seeder
                 $thread_next_stage = $threadStarter_next_stage->commentThread()->create();
                 $threadStarter_next_stage->save();
                 $thread_next_stage->save();
-                $reply['next_stage']['comment_thread_id'] = $thread_next_stage->id;
+                $reply['next_stage']['commentthread_id'] = $thread_next_stage->id;
                 $next['current_stage'] = $reply['next_stage'];
                 $next['next_stage'] = [];
                 /**

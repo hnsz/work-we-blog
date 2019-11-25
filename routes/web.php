@@ -11,22 +11,28 @@
 |
 */
 
+
+
 Route::view('/', 'std.slash');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', 'DashboardController@index');
     Route::get('posts/create', 'PostController@create');
     //  POST: /posts, redir create with flashdata
 });
-Route::resource('/posts', 'PostController');
+
+
+// Route::resource('/posts', 'PostController');
 
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/');
 });
 
-Route::get('posts/{post}/comments/', 'CommentController@index');
+// Route::get('posts/{post}/comments/', 'CommentController@index');
+Route::post('/posts/{post}/reply/', 'ReplyableController@reply' );
 
-Auth::routes();
+
 
 

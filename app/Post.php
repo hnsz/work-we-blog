@@ -14,7 +14,6 @@ class Post extends Model
         'title', 'body', 'created_at', 'published_at'
     ];
     public function threadStarter()
-    
     {
         return $this->morphOne('App\Threadstarter', 'replyable')->withDefault();
     }

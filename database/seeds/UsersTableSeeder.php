@@ -3,7 +3,7 @@
 
 
 use Illuminate\Database\Seeder;
-use \App\Contracts\DataProvider;
+use \App\Contracts\SeedDataProvider;
 use Carbon\Carbon;
 
 
@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(DataProvider $provider)
+    public function run(SeedDataProvider $provider)
     {
         $this->runOnce ();
         $users = $provider->get();

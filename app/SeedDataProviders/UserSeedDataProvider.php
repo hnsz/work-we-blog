@@ -42,7 +42,7 @@ class UserSeedDataProvider implements SeedDataProvider
     }
     public function json()
     {
-        return json_encode($this->generator($this->faker));
+        return json_encode(iterator_to_array($this->get()));
     }
 
     public function get()
