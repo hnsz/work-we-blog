@@ -22,16 +22,6 @@ class CommentReplyRequestTest extends TestCase
         parent::setUp();
         $this->artisan('migrate:fresh');
         $this->seed();
-        /*
-        
-        \DB::table('users')->insert([
-                'name' => 'hns',
-                'email' => 'hansrudolfw@gmail.com',
-                'password' => \Hash::make('welkom01'),
-                'created_at' => \Carbon\Carbon::now()
-            ]);
-        */
-
     }
 
     public function testHttpResponse()
@@ -51,7 +41,7 @@ class CommentReplyRequestTest extends TestCase
         $responseObject->assertHeader('x-accept-message');
         $responseObject->assertHeaderMissing('x-reject-message');
         $responseObject->assertStatus(202);
-        $req = $this->app->get_defined_vars();
+        
 
     }
     /**
@@ -70,5 +60,13 @@ class CommentReplyRequestTest extends TestCase
 
         
     }
+    public function testUcCommentReply()
+    {
+        $replyableCtrl = \App\Http\Controllers\ReplyableController::create();
 
+        $this->assertNotNull($replyableCtrl);
+
+    }
 }
+
+
