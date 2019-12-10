@@ -14,7 +14,7 @@
         "fzaninotto/faker": "^1.8",
         "garethellis/hamcrest-matchers": "^2.2",
         "hamcrest/hamcrest-php": "^2.0",
-        "laravel/framework": "^5.7",
+        "laravel/framework": "<7.0",
         "laravel/tinker": "^1.0",
         "nesbot/carbon": "^2.24",
         "symfony/yaml": "^4.3"
