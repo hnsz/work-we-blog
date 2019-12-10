@@ -31,7 +31,7 @@ Route::get('/logout', function () {
 });
 
 // Route::get('posts/{post}/comments/', 'CommentController@index');
-Route::post('/posts/{post}/reply/', 'ReplyableController@reply' );
+Route::post('/posts/{post}/reply/', 'ReplyableController@createComment' );
 
 
 

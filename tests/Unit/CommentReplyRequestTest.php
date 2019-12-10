@@ -34,9 +34,10 @@ class CommentReplyRequestTest extends TestCase
         ];
         $headers = ["Content-type" => "text/plain"];
         $responseObject = $this->post("/posts/1/reply/",$data, $headers);
-
+        
 
         $this->assertInstanceOf(TestResponse::class, $responseObject);
+        $request = $responseObject->request
         $responseObject->assertSuccessful();
         $responseObject->assertHeader('x-accept-message');
         $responseObject->assertHeaderMissing('x-reject-message');
@@ -57,6 +58,19 @@ class CommentReplyRequestTest extends TestCase
         
         $this->assertInstanceOf(\App\User::class, $user);
         $this->assertTrue(Auth::check());
+
+        $data = [ 
+            ['title' => "OP sucks",
+             'body'=>"This is the most ill-informed story I have ever read. what is this website coming to.",
+            ],
+        ];
+        $headers = ["Content-type" => "text/plain"];
+        $responseObject = $this->post("/posts/1/reply/",$data, $headers);
+        dd($responseObject);
+        // $request = new CommentReply();
+        // $this->withHeader('x-getfucked', 'thisworks');
+        // $this->assertNotNull($request);
+        // dd($request);
     }
     /**
      * 

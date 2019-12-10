@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CommentReply;
+use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Tests\Unit\CommentReplyRequestTest;
 
 class ReplyableController extends Controller
 {
@@ -21,11 +24,23 @@ class ReplyableController extends Controller
         $headers = ["x-accept-message" => "We accept your gift in the same spirit with which it was given, human."];
         return new Response("GOOD TIMES! All is well..", 202,  $headers);
     }
-    public function createComment()
+    public function createComment(Request $commentReply)
     {
         
-
+        $user = $this->getUserOrFail();
+        $commentData = $commentReply->get('title');
+        dd($commentData);
+        $comment = $user->comments()->create($commentData);
+        dd($comment);
     }
-    
+    private function getUserOrFail(): User
+    {
+        if (Auth::check()) {
+            return Auth::user();
+        } else {
+            throw new \Exception("You have to log in to post a comment.");
+        }
+    }
+ 
     
 }
