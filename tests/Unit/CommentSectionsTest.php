@@ -23,7 +23,7 @@ class CommentSectionsTest extends TestCase
     {
 
         $post = \App\Post::find(1);
-        $replies = $post->threadStarter->commentThread->replies;
+        $replies = $post->threadstarter->commentthread->replies;
         
         
         
@@ -33,12 +33,12 @@ class CommentSectionsTest extends TestCase
         $this->assertCount(3,$replies);
         foreach($replies as $reply) {
             $this->assertInstanceOf(\App\Comment::class, $reply);
-            $this->assertInstanceOf(\App\ThreadStarter::class, $reply->threadStarter);
+            $this->assertInstanceOf(\App\ThreadStarter::class, $reply->threadstarter);
             
         }
-        $subThread_0 = $replies[0]->threadStarter->commentThread;
-        $subThread_1 = $replies[1]->threadStarter->commentThread;
-        $subThread_2 = $replies[2]->threadStarter->commentThread;
+        $subThread_0 = $replies[0]->threadstarter->commentthread;
+        $subThread_1 = $replies[1]->threadstarter->commentthread;
+        $subThread_2 = $replies[2]->threadstarter->commentthread;
         $this->assertNotNull($subThread_0);
         $this->assertNull($subThread_1);
         $this->assertNotNull($subThread_2);
@@ -51,7 +51,7 @@ class CommentSectionsTest extends TestCase
         $this->assertCount(1,$subThread_2->replies);
         $this->assertNotEquals($subThread_2->id, $subThread_0->id);
         $this->assertLessThan($subThread_2->id, $subThread_0->id);
-        $this->assertGreaterThan($post->threadStarter->commentThread->id, $subThread_0->id);
+        $this->assertGreaterThan($post->threadstarter->commentthread->id, $subThread_0->id);
 
     
     }
@@ -62,28 +62,28 @@ class CommentSectionsTest extends TestCase
         $expected_comments = [
             [
                 'body' => "hello nice story",
-                'minor_title' => 'none',
-                'comment_thread_id' => 1
+                'title' => 'none',
+                'commentthread_id' => 1
             ],
             [
                 'body' => "loved this, thanks",
-                'minor_title' => 'none',
-                'comment_thread_id' => 1
+                'title' => 'none',
+                'commentthread_id' => 1
             ],
             [
                 'body' => "Totally recognisable. Amirite?!",
-                'minor_title' => 'none',
-                'comment_thread_id' => 1
+                'title' => 'none',
+                'commentthread_id' => 1
             ],
             [
                 'body' => "hElLo nIcE St0rY..",
-                'minor_title' => 'lol xd',
-                'comment_thread_id' => 2
+                'title' => 'lol xd',
+                'commentthread_id' => 2
             ],
             [
                 'body' => "You are man. Nostalgia. This brings tears to my eyes.",
-                'minor_title' => 'none',
-                'comment_thread_id' => 3
+                'title' => 'none',
+                'commentthread_id' => 3
             ],       
         ];
         $lastCommentId = 0;
@@ -91,14 +91,14 @@ class CommentSectionsTest extends TestCase
         foreach($comments as $comment){
             $expected = array_shift($expected_comments);
             $this->assertEquals($expected['body'], $comment->body);
-            $this->assertEquals($expected['minor_title'], $comment->minor_title);
-            $this->assertEquals($expected['comment_thread_id'], $comment->comment_thread_id);
+            $this->assertEquals($expected['title'], $comment->title);
+            $this->assertEquals($expected['commentthread_id'], $comment->commentthread_id);
             $this->assertGreaterThan($lastCommentId, $comment->id);
             $this->assertLessThan($lastCommentId+2, $comment->id);
-            $this->assertGreaterThanOrEqual($lastThreadId, $comment->comment_thread_id);
-            $this->assertLessThanOrEqual($lastThreadId+1, $comment->comment_thread_id);
+            $this->assertGreaterThanOrEqual($lastThreadId, $comment->commentthread_id);
+            $this->assertLessThanOrEqual($lastThreadId+1, $comment->commentthread_id);
             $lastCommentId = $comment->id;
-            $lastThreadId = $comment->comment_thread_id;
+            $lastThreadId = $comment->commentthread_id;
         }
         
     }
@@ -117,11 +117,11 @@ class CommentSectionsTest extends TestCase
     public function testCommentMorph()
     {
         $comment = \App\Comment::find(1);
-        $threadStarter = $comment->threadStarter;
+        $threadstarter = $comment->threadstarter;
 
-        $this->assertInstanceOf(\App\ThreadStarter::class, $threadStarter);
-        $this->assertNotNull($threadStarter->commentThread);
-        $this->assertInstanceOf(\App\CommentThread::class, $threadStarter->commentThread);
+        $this->assertInstanceOf(\App\ThreadStarter::class, $threadstarter);
+        $this->assertNotNull($threadstarter->commentthread);
+        $this->assertInstanceOf(\App\Commentthread::class, $threadstarter->commentthread);
 
     }
     public function testPostMorph()
@@ -131,28 +131,28 @@ class CommentSectionsTest extends TestCase
 
     public function testReplyToThreadStarter()
     {
-        $threadStarter = \App\ThreadStarter::find(1);
+        $threadstarter = \App\ThreadStarter::find(1);
         $user = \App\User::find(8);
-        $this->assertInstanceOf(\App\ThreadStarter::class, $threadStarter);
-        $commentThread = $threadStarter->commentThread;
-        $this->assertNotNull($commentThread);
-        $this->assertInstanceOf(\App\CommentThread::class, $commentThread);
-        $this->assertCount(3, $commentThread->replies);
-        $comment = new \App\Comment(["minor_title"=>"test comment", "body"=>"this is a test comment"]);
+        $this->assertInstanceOf(\App\ThreadStarter::class, $threadstarter);
+        $commentthread = $threadstarter->commentthread;
+        $this->assertNotNull($commentthread);
+        $this->assertInstanceOf(\App\Commentthread::class, $commentthread);
+        $this->assertCount(3, $commentthread->replies);
+        $comment = new \App\Comment(["title"=>"test comment", "body"=>"this is a test comment"]);
         $comment->user()->associate($user);
         
 
         // $this->expectException(\Illuminate\Database\QueryException::class);
         // $comment->save();
         // $this->checkExceptionExpectations();
-        $this->assertNull($comment->commentThread);
-        $threadStarter->reply($comment);
-        $commentThread->save();
+        $this->assertNull($comment->commentthread);
+        $threadstarter->reply($comment);
+        $commentthread->save();
         $comment->save();
-        $this->assertInstanceOf(\App\CommentThread::class, $comment->commentThread);
-        $this->assertNotNull($comment->commentThread);
+        $this->assertInstanceOf(\App\Commentthread::class, $comment->commentthread);
+        $this->assertNotNull($comment->commentthread);
 
-        $this->assertCount(3, $commentThread->replies);
+        $this->assertCount(3, $commentthread->replies);
     }
     
     public function testReplyToPost()

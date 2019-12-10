@@ -8,8 +8,8 @@ use Tests\TestCase;
 // use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestResponse;
-
-
+use Illuminate\Foundation\Testing\Concerns\InteractsWithContainer;
+use Illuminate\Support\Facades\Auth;
 /**
  * @group request
  */
@@ -52,19 +52,29 @@ class CommentReplyRequestTest extends TestCase
     {
 
         $user = new \App\User(['email' => 'hansrudolfw@gmail.com', 'password' => 'welkom01']);
-        \Auth::login($user);
+        
+        Auth::login($user);
         
         $this->assertInstanceOf(\App\User::class, $user);
-        $this->assertTrue(\Auth::check());
-        
-
-        
+        $this->assertTrue(Auth::check());
     }
+    /**
+     * 
+     *
+     * @return void
+     */
     public function testUcCommentReply()
     {
-        $replyableCtrl = \App\Http\Controllers\ReplyableController::create();
+        $replyctrl = \App\Http\Controllers\ReplyableController::class;
+        $insta = new \App\Http\Controllers\ReplyableController();
+        $this->instance($replyctrl, $insta);
+
+        $replyableCtrl = $this->mock($replyctrl);
+        
+        
 
         $this->assertNotNull($replyableCtrl);
+        $this->assertInstanceOf($replyctrl, $replyableCtrl);
 
     }
 }

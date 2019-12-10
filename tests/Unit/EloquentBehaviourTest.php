@@ -64,18 +64,18 @@ class EloquentBehaviourTest extends TestCase
     {
         $user = $this->user();
         
-        $post = new \App\Post(["title"=>"Anything that starts with too is bad.",
+        $replyable = new \App\Post(["title"=>"Anything that starts with too is bad.",
                                 "body"=>"As the title said, discuss.."]);
 
-        $nullObject = $post->threadStarter;
+        $nullObject = $replyable->threadStarter;
 
         $m = "Should return default null object";
         $this->assertNotNull($nullObject,$m);
 
-        $this->assertFalse($post->wasRecentlyCreated);
+        $this->assertFalse($replyable->wasRecentlyCreated);
         $this->assertFalse($nullObject->wasRecentlyCreated);
 
-        $starter = $post->threadStarter;
+        $starter = $replyable->threadStarter;
         $m = "Second access to property should give same object as null object";
         $this->assertSame($nullObject,$starter);
         // $user->posts()->save($replyablePost);
@@ -83,11 +83,11 @@ class EloquentBehaviourTest extends TestCase
         /** Verifying the behaviour is what I think */
         $m = "After changes are made, it should still be the same object as the null object.";
         $this->assertSame($nullObject,$starter, $m);
-        $starter2 = $replyablePost->threadStarter;
+        $starter2 = $replyable->threadStarter;
         $this->assertSame($nullObject,$starter2, $m);
         
                 
-        $nullObject->save();
+        
                 
         
 

@@ -25,12 +25,12 @@ class Comment extends Model
  * deze twee id's wil je alleen zelf instellen
  * wanneer je een database insert doet
  */
-    public function threadStarter()
+    public function threadstarter()
     {
          return $this->morphOne('App\Threadstarter', 'replyable')->withDefault();
     }
 
-    public function commentThread()
+    public function commentthread()
     {
         return $this->belongsTo('App\Commentthread');
     }
