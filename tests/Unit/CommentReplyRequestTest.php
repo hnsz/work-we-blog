@@ -9,6 +9,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestResponse;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithContainer;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 /**
  * @group request
@@ -37,7 +38,7 @@ class CommentReplyRequestTest extends TestCase
         
 
         $this->assertInstanceOf(TestResponse::class, $responseObject);
-        $request = $responseObject->request
+        
         $responseObject->assertSuccessful();
         $responseObject->assertHeader('x-accept-message');
         $responseObject->assertHeaderMissing('x-reject-message');
@@ -51,7 +52,6 @@ class CommentReplyRequestTest extends TestCase
      */
     public function testCommentCreate()
     {
-
         $user = new \App\User(['email' => 'hansrudolfw@gmail.com', 'password' => 'welkom01']);
         
         Auth::login($user);
@@ -66,7 +66,18 @@ class CommentReplyRequestTest extends TestCase
         ];
         $headers = ["Content-type" => "text/plain"];
         $responseObject = $this->post("/posts/1/reply/",$data, $headers);
-        dd($responseObject);
+        
+        
+        $a =  new Request(  $query=[], 
+                            $request=[],
+                            $attributes=[],
+                            $cookies = [],
+                            $files = [],
+                            $server = [],
+                            $content = "GIMME DEM DUKATS FOOL!"
+                        );
+
+        dd($a);
         // $request = new CommentReply();
         // $this->withHeader('x-getfucked', 'thisworks');
         // $this->assertNotNull($request);

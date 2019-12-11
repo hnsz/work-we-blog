@@ -7,6 +7,8 @@ use App\Http\Requests\CommentReply;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Request as FacadesRequest;
+use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
 use Tests\Unit\CommentReplyRequestTest;
 
 class ReplyableController extends Controller
