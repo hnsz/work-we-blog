@@ -31,9 +31,9 @@ class ReplyableController extends Controller
         
         $user = $this->getUserOrFail();
         $commentData = $commentReply->get('title');
-        dd($commentData);
+        
         $comment = $user->comments()->create($commentData);
-        dd($comment);
+        
     }
     private function getUserOrFail(): User
     {
