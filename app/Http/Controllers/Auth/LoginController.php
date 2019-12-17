@@ -28,6 +28,21 @@ class LoginController extends Controller
     protected $redirectTo = '/dashboard';
 
     /**
+     * Credentials form
+     *  
+     */
+    public function credentialsForm()
+    {
+        return view('auth.login');
+    }
+    /**
+     * Undocumented function
+     */
+    public function authenticateByCredentials( )
+    {
+        
+    }
+    /**
      * Create a new controller instance.
      *
      * @return void
