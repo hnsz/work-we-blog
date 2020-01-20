@@ -19,6 +19,7 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     
     Route::resource('/posts', 'PostController');
+    Route::resource('/dashboard', 'DashboardController');
     // Route::get('/posts', 'PostController@index');
     // Route::get('/dashboard', 'DashboardController@index');
     // Route::get('posts/create', 'PostController@create');
