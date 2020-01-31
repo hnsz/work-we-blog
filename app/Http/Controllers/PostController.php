@@ -147,8 +147,10 @@ class PostController extends Controller
         //update
         // ...
         $vm_post['user_logged_in'] = Auth::check();
-        $vm_post['user_is_post_owner'] = ($post->user_id === Auth::user()->id);
-            //policy
+        $vm_post['user_is_post_owner'] = (Auth::check())
+                                            ? ($post->user_id === Auth::user()->id)
+                                            : false;
+        //policy
 
         //delete
         // ...
