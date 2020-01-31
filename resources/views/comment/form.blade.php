@@ -3,7 +3,7 @@
 	@method('post')
 	
 	@if ($errors->any())
-	@include("std.parts.comment_form_errors")
+	@include("parts.comment_form_errors")
 	@endif
 
 	

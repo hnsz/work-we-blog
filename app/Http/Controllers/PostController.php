@@ -21,7 +21,7 @@ class PostController extends Controller
     {
 
         $posts = Post::all();
-        return view('std.posts.index', ['posts' => $posts]);
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -32,7 +32,7 @@ class PostController extends Controller
     public function create(Request $request)
     {
         //middlewareauth, redirect login (/register)
-        return view('std.posts.create');
+        return view('posts.create');
     }
 
     /**
@@ -90,10 +90,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(\App\Post $post)
     {
-        $post = Post::find($id);
-        return view('std.posts.read', ['post' => $post]);
+        // Auth::loginUsingId(4);
+         
+        $vm_post = $this->createViewModel($post);
+        return view('posts.read', ['vm_post' => $vm_post]);
     }
 
     /**
@@ -102,11 +104,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(\App\Post $post)
     {
-        //middeware auth
+        $vm_post = $this->createViewModel($post);
+        return view('posts.edit', ['post' => $post]);
     }
 
+    
     /**
      * Update the specified resource in storage.
      *
@@ -117,8 +121,42 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         // middleware auth
-    }
 
+        
+    }
+    /**
+     * Turn a post model into a viewmodel, to be used in template.
+     *
+     * @param \App\Post $post
+     * @return Array an associative array
+     */
+    private function createViewModel(\App\Post $post)
+    {
+        // read/show
+        $vm_post = $post->attributesToArray();
+        $vm_post['author'] = $post->user->name;
+        $vm_post['edit_url'] = action([PostController::class, 'edit'], ['post' => $post->id]);
+        $vm_post['show_edit_url'] = (Auth::check() &&  $post->user_id === Auth::user()->id);
+
+        // store
+        // ... 
+
+        // edit
+        
+
+        //update
+        // ...
+        $vm_post['user_logged_in'] = Auth::check();
+        $vm_post['user_is_post_owner'] = ($post->user_id === Auth::user()->id);
+            //policy
+
+        //delete
+        // ...
+
+
+        return $vm_post;
+    }
+    
     /**
      * Remove the specified resource from storage.
      *

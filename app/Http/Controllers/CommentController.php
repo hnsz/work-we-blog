@@ -18,7 +18,7 @@ class CommentController extends Controller
         //
         $thread = $post->threadStarter->commentThread;
         return $thread->replies;
-        return view('std.posts.read', ['post' => $post]);
+        return view('posts.read', ['post' => $post]);
     }
 
     /**
@@ -28,7 +28,7 @@ class CommentController extends Controller
      */
     public function create(\App\Post $post)
     {
-        return view('std.posts.read', ['post' => $post]);
+        return view('posts.read', ['post' => $post]);
     }  
 
     /**
@@ -64,7 +64,7 @@ class CommentController extends Controller
     public function edit(Comment $comment)
     {
         
-        return view('std.parts.comment_form');
+        return view('parts.comment_form');
     }
 
     /**

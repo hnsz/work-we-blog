@@ -1,8 +1,8 @@
-@extends('std.layouts.default')
+@extends('layouts.default')
 
 @section('header')
 
-	@include('std.parts.header', ['title' => "Welcome to Slash",  'subtitle' => 'Latest Articles'])
+	@include('parts.header', ['title' => "Welcome to Slash",  'subtitle' => 'Latest Articles'])
 
 @endsection
 
@@ -16,7 +16,7 @@
         <div class='card-group w-100'>
     @endif
 
-        @include('std.parts.post_summary', $post)
+        @include('parts.post_summary', $post)
 
     @if($loop->last || $loop->even)
         </div> <!--//card group   -->

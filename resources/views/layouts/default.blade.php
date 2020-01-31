@@ -75,7 +75,7 @@
 <div class='container flex-center position-ref full-height pt-2'>
     <ul class='nav nav-pills EBGaramond-Regular'>
         @section('site navigation')
-        @include('std.parts.links', ['site_links' => [
+        @include('parts.links', ['site_links' => [
                 ['href'=>'/', 'name'=>'/'],
                 ['href'=>'/', 'name'=>' Something'],
                 ['href'=>'/posts', 'name'=>'Popular Posts'],

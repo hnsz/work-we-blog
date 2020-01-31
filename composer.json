@@ -15,7 +15,7 @@
         "garethellis/hamcrest-matchers": "^2.2",
         "hamcrest/hamcrest-php": "^2.0",
         "laravel/framework": "<7.0",
-        "laravel/tinker": "^1.0",
+        "laravel/tinker": "^2.0",
         "nesbot/carbon": "^2.24",
         "phpunit/php-code-coverage": "^7.0",
         "phpunit/phpunit": "^8.5",
