@@ -20,3 +20,4 @@ yarn-error.log
 .styleci.yml
 project_files/.vscode
 phpunit
+.vscode-workspace-work-we-blog-thuis.code-workspace
