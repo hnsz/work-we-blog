@@ -15,64 +15,66 @@ EOD,
                  'body' =>
 <<<'EOD'
 
-<h5 class='EBGaramond-Regular pt-5 pb-2'>You appear to be posting a</h5>
-
-<ul class='list-group list-group-flush pl-3'>
-   	<li class='list-group-item  p-1'>( )		in Soviet Russia</li>
-   	<li class='list-group-item  p-1'>(x)		I for one welcome out new ... overlords</li>
-   	<li class='list-group-item  p-1'>( )		imagine a Beowulf cluster</li>
-   	<li class='list-group-item  p-1'>( )		Does it run Linux</li>
-   	<li class='list-group-item  p-1'>( )		Spam prevention will not work checklist</li>
-   	<li class='list-group-item  p-1'>(x)		You must be new here</li>
-   	<li class='list-group-item  p-1'>( )		insensitive clod</li>
-   	<li class='list-group-item  p-1'>( )		in Korea only old people</li>
-   	<li class='list-group-item  p-1'>( )		Netcraft confirms</li>
-   	<li class='list-group-item  p-1'>( )		Stephen King is dead</li>
-   	<li class='list-group-item  p-1'>( )		a highly moderated post from the previous duped story</li>
-   	<li class='list-group-item  p-1'>( )		gee I've never had that probl%!$*%& [No Carrier]</li>
-</ul>
+You appear to be posting a>
 
 
-
-<h5  class='EBGaramond-Regular pt-5>Post in an attempt to obtain karma. Your attempt will not work. Here is why it won't work. (One or more of the following may apply to your particular post, and it may have other flaws which used to vary from topic to topic.)</h5>
-
-<ul class='list-group list-group-flush pl-3'>
-   	<li class='list-group-item  p-1'>(x)		Posts like yours are getting old an tired, and quite frankly we're sick of them</li>
-   	<li class='list-group-item  p-1'>(x)		Your User Id is too high</li>
-   	<li class='list-group-item  p-1'>( )		It just isn't funny enough</li>
-   	<li class='list-group-item  p-1'>(x)		Funny mods don't give karma</li>
-</ul>
-
-
-<h5   class='EBGaramond-Regular pt-5 pb-2'>Specifically, your post fails to cater to</h5>
-
-<ul class='list-group list-group-flush pl-3'>
-   	<li class='list-group-item  p-1'>( )		Anything relevant to the story</li>
-   	<li class='list-group-item  p-1'>(x)		Extreme stupidity on the part of moderators</li>
-   	<li class='list-group-item  p-1'>( )		Extensive research into the topic</li>
-</ul>
+ ( )	in Soviet Russia
+ (x)	I for one welcome out new ... overlords
+ ( )	imagine a Beowulf cluster
+ ( )	Does it run Linux
+ ( )	Spam prevention will not work checklist
+ (x)	You must be new here
+ ( )	insensitive clod
+ ( )	in Korea only old people
+ ( )	Netcraft confirms
+ ( )	Stephen King is dead
+ ( )	a highly moderated post from the previous duped story
+ ( )	gee I've never had that probl%!$*%& [No Carrier]
 
 
 
-<h5   class='EBGaramond-Regular pt-5 pb-2'>And the following philosophical objections may also apply:</h5>
 
-<ul class='list-group list-group-flush pl-3'>
-   	<li class='list-group-item  p-1'>( )		Posts similar to yours are easy to come up with, yet none have ever been highly moderated</li>
-   	<li class='list-group-item  p-1'>( )		That's a common troll that has never been verified</li>
-   	<li class='list-group-item  p-1'>(x)		You obviously haven't read the article</li>
-   	<li class='list-group-item  p-1'>(x)		You haven't even read the summary</li>
-   	<li class='list-group-item  p-1'>( )		Or the headline</li>
-   	<li class='list-group-item  p-1'>( )		Killing you that way is not slow and painful enough</li>
-</ul>
+Post in an attempt to obtain karma. Your attempt will not work. Here is why it won't work.
+ (One or more of the following may apply to your particular post, 
+ and it may have other flaws which used to vary from topic to topic.)>
 
 
-<h5   class='EBGaramond-Regular pt-5 pb-2 '>Furthermore, this is what I think about you:</h5>
+ (x)	Posts like yours are getting old an tired, and quite frankly we're sick of them
+ (x)	Your User Id is too high
+ ( )	It just isn't funny enough
+ (x)	Funny mods don't give karma
 
-<ul class='list-group list-group-flush pl-3 list-unstyled'>
-   	<li class='list-group-item  p-1'>( )		Sorry dude, but I don't think it would work.</li>
-   	<li class='list-group-item  p-1'>(x)		This is a stupid post, and you're a stupid person for posting it.</li>
-   	<li class='list-group-item  p-1'>( )		 Nice try, assh0le! I'm going to find out where you live and burn your house down!</li>
-</ul>
+
+
+Specifically, your post fails to cater to>
+
+
+ ( )	Anything relevant to the story
+ (x)	Extreme stupidity on the part of moderators
+ ( )	Extensive research into the topic
+
+
+
+
+And the following philosophical objections may also apply:>
+
+
+ ( )	Posts similar to yours are easy to come up with, yet none have ever been highly moderated
+ ( )	That's a common troll that has never been verified
+ (x)	You obviously haven't read the article
+ (x)	You haven't even read the summary
+ ( )	Or the headline
+ ( )	Killing you that way is not slow and painful enough
+
+
+
+Furthermore, this is what I think about you:>
+
+
+ ( )	Sorry dude, but I don't think it would work.
+ (x)	This is a stupid post, and you're a stupid person for posting it.
+ ( )	 Nice try, assh0le! I'm going to find out where you live and burn your house down!
+
 
 
 EOD],

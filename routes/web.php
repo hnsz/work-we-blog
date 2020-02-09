@@ -11,27 +11,24 @@
 |
 */
 
-
-
 Route::view('/', 'std.slash');
 
 
+Auth::routes();
+
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', 'DashboardController@index');
-    Route::get('posts/create', 'PostController@create');
-    //  POST: /posts, redir create with flashdata
-});
+    
+    Route::resource('/posts', 'PostController');
+    Route::resource('/dashboard', 'DashboardController');
+    // Route::get('/posts', 'PostController@index');
+    // Route::get('/dashboard', 'DashboardController@index');
+    // Route::get('posts/create', 'PostController@create');
 
-
-// Route::resource('/posts', 'PostController');
-
-Route::get('/logout', function () {
-    Auth::logout();
-    return redirect('/');
+    
 });
 
 // Route::get('posts/{post}/comments/', 'CommentController@index');
-Route::post('/posts/{post}/reply/', 'ReplyableController@reply' );
+// Route::post('/posts/{post}/reply/', 'ReplyableController@reply' );
 
 
 
