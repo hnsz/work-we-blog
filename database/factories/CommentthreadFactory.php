@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\CommentThread;
+use App\Commentthread;
 use Faker\Generator as Faker;
 
-$factory->define(CommentThread::class, function (Faker $faker) {
+$factory->define(Commentthread::class, function (Faker $faker) {
     return [
         //
     ];

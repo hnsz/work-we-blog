@@ -13,7 +13,7 @@ class Post extends Model
     protected $fillable = [
         'title', 'body', 'created_at', 'published_at'
     ];
-    public function threadStarter()
+    public function threadstarter()
     {
         return $this->morphOne('App\Threadstarter', 'replyable')->withDefault();
     }

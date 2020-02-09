@@ -16,7 +16,7 @@ class CommentController extends Controller
     public function index(\App\Post $post)
     {
         //
-        $thread = $post->threadStarter->commentThread;
+        $thread = $post->threadstarter->commentThread;
         return $thread->replies;
         return view('std.posts.read', ['post' => $post]);
     }

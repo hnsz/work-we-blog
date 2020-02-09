@@ -1,7 +1,7 @@
 <?php
 
 
-interface ThreadStarter
+interface Threadstarter
 {
     public function hasMany();
 

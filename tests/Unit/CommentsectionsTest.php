@@ -33,7 +33,7 @@ class CommentSectionsTest extends TestCase
         $this->assertCount(3,$replies);
         foreach($replies as $reply) {
             $this->assertInstanceOf(\App\Comment::class, $reply);
-            $this->assertInstanceOf(\App\ThreadStarter::class, $reply->threadstarter);
+            $this->assertInstanceOf(\App\Threadstarter::class, $reply->threadstarter);
             
         }
         $subThread_0 = $replies[0]->threadstarter->commentthread;
@@ -102,10 +102,10 @@ class CommentSectionsTest extends TestCase
         }
         
     }
-    public function testThreadStarters()
+    public function testThreadstarters()
     {
 
-        $thSt = \App\ThreadStarter::all();
+        $thSt = \App\Threadstarter::all();
         $this->assertInstanceOf(\Illuminate\Support\Collection::class, $thSt);
         $this->assertInstanceOf(\App\Post::class,$thSt->first()->replyable);
         
@@ -119,7 +119,7 @@ class CommentSectionsTest extends TestCase
         $comment = \App\Comment::find(1);
         $threadstarter = $comment->threadstarter;
 
-        $this->assertInstanceOf(\App\ThreadStarter::class, $threadstarter);
+        $this->assertInstanceOf(\App\Threadstarter::class, $threadstarter);
         $this->assertNotNull($threadstarter->commentthread);
         $this->assertInstanceOf(\App\Commentthread::class, $threadstarter->commentthread);
 
@@ -129,11 +129,11 @@ class CommentSectionsTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function testReplyToThreadStarter()
+    public function testReplyToThreadstarter()
     {
-        $threadstarter = \App\ThreadStarter::find(1);
+        $threadstarter = \App\Threadstarter::find(1);
         $user = \App\User::find(8);
-        $this->assertInstanceOf(\App\ThreadStarter::class, $threadstarter);
+        $this->assertInstanceOf(\App\Threadstarter::class, $threadstarter);
         $commentthread = $threadstarter->commentthread;
         $this->assertNotNull($commentthread);
         $this->assertInstanceOf(\App\Commentthread::class, $commentthread);
@@ -169,7 +169,7 @@ class CommentSectionsTest extends TestCase
     {
         $this->assertTrue(true);
     }
-    public function testThreadStarterGetThread()
+    public function testThreadstarterGetThread()
     {
         $this->assertTrue(true);
     }
@@ -178,7 +178,7 @@ class CommentSectionsTest extends TestCase
     {
         $this->assertTrue(true);
     }
-    public function testThreadStarterHasReplies()
+    public function testThreadstarterHasReplies()
     {
         $this->assertTrue(true);
     }
