@@ -11,31 +11,9 @@ class CommentThreadSeeder extends Seeder
      */
     public function run()
     {
-        /**
-         * CommentSection(ThreadStarter Post)
-         * threadStarter->save()
-         * Comment form
-         * Request Controller
-         * 
-         * commentSectionController
-         * threadStarter->reply(comment)
-         *  commentThread= 
-         *      threadStarter->hasCommentThread()
-         *          or
-         *      threadStarter->commentThread->create()
-         *  commentThread->attach(comment)
-         * 
-         * 
-         */
-     
-            /**
-             * if a commentsection is enabled for this post
-             *       create threadstarter 
-             * 
-               */ 
-        $starter = App\Post::find(1)->threadStarter()->create();
+        $starter = App\Post::find(1)->threadstarter()->create();
 
-        $thread = $starter->commentThread()->create();
+        $thread = $starter->commentthread()->create();
 
         $starter->save();
         $thread->save();    
@@ -83,13 +61,13 @@ class CommentThreadSeeder extends Seeder
             $user = $users->pop();
 
             $comment = $user->comments()->create($init_list);
-            $threadStarter_next_stage = $comment->threadStarter()->create();
+            $threadstarter_next_stage = $comment->threadstarter()->create();
             $comment->save();
             $user->save();
             
             if (!empty($reply['next_stage'])) {
-                $thread_next_stage = $threadStarter_next_stage->commentThread()->create();
-                $threadStarter_next_stage->save();
+                $thread_next_stage = $threadstarter_next_stage->commentthread()->create();
+                $threadstarter_next_stage->save();
                 $thread_next_stage->save();
                 $reply['next_stage']['commentthread_id'] = $thread_next_stage->id;
                 $next['current_stage'] = $reply['next_stage'];

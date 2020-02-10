@@ -87,11 +87,11 @@ class CommentTest extends TestCase
     //     $this->assertTrue(true);
     // }
     // /** @dataProvider provideComment */
-    // public function testReplyToThreadStarter($comment)
+    // public function testReplyToThreadstarter($comment)
     // {
     //     $this->assertTrue(true);
     // }
-    public function testThreadHasManyThoughStarter()
+    public function testThreadHasManyThoughstarter()
     {
         $this->assertTrue(true);
 
