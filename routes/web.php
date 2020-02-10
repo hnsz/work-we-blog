@@ -11,6 +11,7 @@
 |
 */
 
+use App\Http\Controllers\PostController;
 use Illuminate\Routing\RouteGroup;
 
 Route::view('/home', 'slash');
@@ -19,11 +20,12 @@ Route::get('/logout', function () {Auth::logout(); return redirect('/home');});
 Auth::routes();
 
 
-
-// Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::resource('/posts', 'PostController');
     Route::resource('/dashboard', 'DashboardController'); 
-// });
+});
+Route::get('/posts', 'PostController@index');
+Route::get('/posts/{post}/', 'PostController@show');
 
     
     

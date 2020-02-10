@@ -13,7 +13,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $posts = \App\Post::all();
+        return view('dashboard', ['posts' => $posts]);
     }
 
     /**

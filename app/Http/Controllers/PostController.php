@@ -94,8 +94,8 @@ class PostController extends Controller
     {
         // Auth::loginUsingId(4);
          
-        $vm_post = $this->createViewModel($post);
-        return view('posts.read', ['vm_post' => $vm_post]);
+        $viewmodel = ['post' => $post];
+        return view('posts.show', $viewmodel);
     }
 
     /**
@@ -106,8 +106,8 @@ class PostController extends Controller
      */
     public function edit(\App\Post $post)
     {
-        $vm_post = $this->createViewModel($post);
-        return view('posts.edit', ['post' => $post]);
+        $viewmodel = ['post' => $post];
+        return view('posts.edit', $viewmodel);
     }
 
     
@@ -118,45 +118,17 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
         // middleware auth
+        $fields = ['title', 'body'];
+        if($request->has($fields)) {
+            $formvalues = $request->only($fields);
+        }
+        
+        dd($formvalues);
 
         
-    }
-    /**
-     * Turn a post model into a viewmodel, to be used in template.
-     *
-     * @param \App\Post $post
-     * @return Array an associative array
-     */
-    private function createViewModel(\App\Post $post)
-    {
-        // read/show
-        $vm_post = $post->attributesToArray();
-        $vm_post['author'] = $post->user->name;
-        $vm_post['edit_url'] = action([PostController::class, 'edit'], ['post' => $post->id]);
-        $vm_post['show_edit_url'] = (Auth::check() &&  $post->user_id === Auth::user()->id);
-
-        // store
-        // ... 
-
-        // edit
-        
-
-        //update
-        // ...
-        $vm_post['user_logged_in'] = Auth::check();
-        $vm_post['user_is_post_owner'] = (Auth::check())
-                                            ? ($post->user_id === Auth::user()->id)
-                                            : false;
-        //policy
-
-        //delete
-        // ...
-
-
-        return $vm_post;
     }
     
     /**
