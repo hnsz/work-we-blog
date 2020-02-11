@@ -8,10 +8,17 @@ use Illuminate\Support\Facades\Validator;
 use App\Post;
 use Carbon\Carbon;
 use Auth;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Notifications\Action;
+use Illuminate\Support\Facades\Response;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Post::class, 'post');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -115,20 +122,20 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, \App\Post $post)
     {
-        // middleware auth
         $fields = ['title', 'body'];
         if($request->has($fields)) {
             $formvalues = $request->only($fields);
         }
-        
-        dd($formvalues);
-
-        
+        foreach($formvalues as $key => $value) {
+            $post->setAttribute($key, $value);
+        }
+        $post->save();
+        return redirect("/posts/{$post->id}/");
     }
     
     /**
