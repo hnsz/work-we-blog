@@ -16,9 +16,8 @@ class PostPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function viewAny(User $user=null)
+    public function viewAny(?User $user)
     {
-        
         return true;
     }
 
@@ -29,9 +28,8 @@ class PostPolicy
      * @param  \App\Post  $post
      * @return mixed
      */
-    public function view(User $user, Post $post)
+    public function view(?User $user, Post $post)
     {
-        
         return true;
     }
 
@@ -67,7 +65,8 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        return $user->id === $post->user_id;
+        return true;
+        // return $user->id === $post->user_id;
     }
 
     /**
@@ -91,6 +90,6 @@ class PostPolicy
      */
     public function forceDelete(User $user, Post $post)
     {
-        return false;
+        return true;
     }
 }

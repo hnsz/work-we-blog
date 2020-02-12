@@ -10,7 +10,13 @@
 
 
 
-<form method='post' action="/posts/{{ $post->id}}/">
+<form method='POST' action="/posts/{{$post->id}}/">
+	@csrf
+	@method('DELETE')
+	<input type='submit' name=' ' value='delete post' class='form-control btn-dark col-xl-2'>
+</form>
+
+<form method='post' action="/posts/{{$post->id}}/">
 	@csrf
 	@method('patch')
 	@if ($errors->any()) 

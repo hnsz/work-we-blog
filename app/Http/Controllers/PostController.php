@@ -144,8 +144,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(\App\Post $post)
     {
         //  middleware auth
+        $post->delete();
+        // TODO,DELTHIS: with flashdata post id en dan undo optie thrashed
+        return redirect("/dashboard/");
     }
 }

@@ -31,16 +31,17 @@
         }
 
         body {
-            background-color:#456789;
+            background-color:#568666;
+            color: #3a4831;
         }
         .container {
-            background-color:#ffeeef;
+            background-color:#fff;
         }
 
         .content {
             padding:  15px 10px 100px 10px;
-            background-color:#9e124c;
-            opacity:0.8;
+            background-color:#3a4831;
+            opacity:0.9;
         }
         .content-header-wrap {
             background-color:#456789;            
@@ -82,6 +83,7 @@
             ]
         ])
         @show
+
 
         @if (Route::has('login'))
             <li class='nav-item rounded-top bg-info text-list mr-1 p-1'> <!--// has login-->
