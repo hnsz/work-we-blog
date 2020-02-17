@@ -11,21 +11,22 @@
 |
 */
 
-Route::view('/', 'std.slash');
+use App\Http\Controllers\PostController;
+use Illuminate\Routing\RouteGroup;
 
-
+Route::view('/home', 'slash');
+Route::view('/', 'slash');
+Route::get('/logout', function () {Auth::logout(); return redirect('/home');});
 Auth::routes();
 
+
 Route::middleware(['auth'])->group(function () {
-    
     Route::resource('/posts', 'PostController');
-    Route::resource('/dashboard', 'DashboardController');
-    // Route::get('/posts', 'PostController@index');
-    // Route::get('/dashboard', 'DashboardController@index');
-    // Route::get('posts/create', 'PostController@create');
+    Route::resource('/dashboard', 'DashboardController'); 
+});
 
     
-});
+    
 
 // Route::get('posts/{post}/comments/', 'CommentController@index');
 // Route::post('/posts/{post}/reply/', 'ReplyableController@reply' );

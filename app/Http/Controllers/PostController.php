@@ -8,10 +8,17 @@ use Illuminate\Support\Facades\Validator;
 use App\Post;
 use Carbon\Carbon;
 use Auth;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Notifications\Action;
+use Illuminate\Support\Facades\Response;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Post::class, 'post');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +28,7 @@ class PostController extends Controller
     {
 
         $posts = Post::all();
-        return view('std.posts.index', ['posts' => $posts]);
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -32,7 +39,7 @@ class PostController extends Controller
     public function create(Request $request)
     {
         //middlewareauth, redirect login (/register)
-        return view('std.posts.create');
+        return view('posts.create');
     }
 
     /**
@@ -90,10 +97,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(\App\Post $post)
     {
-        $post = Post::find($id);
-        return view('std.posts.read', ['post' => $post]);
+        // Auth::loginUsingId(4);
+         
+        $viewmodel = ['post' => $post];
+        return view('posts.show', $viewmodel);
     }
 
     /**
@@ -102,31 +111,44 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(\App\Post $post)
     {
-        //middeware auth
+        $viewmodel = ['post' => $post];
+        return view('posts.edit', $viewmodel);
     }
 
+    
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, \App\Post $post)
     {
-        // middleware auth
+        $fields = ['title', 'body'];
+        if($request->has($fields)) {
+            $formvalues = $request->only($fields);
+        }
+        foreach($formvalues as $key => $value) {
+            $post->setAttribute($key, $value);
+        }
+        $post->save();
+        return redirect("/posts/{$post->id}/");
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(\App\Post $post)
     {
         //  middleware auth
+        $post->delete();
+        // TODO,DELTHIS: with flashdata post id en dan undo optie thrashed
+        return redirect("/dashboard/");
     }
 }

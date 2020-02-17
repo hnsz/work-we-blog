@@ -1,7 +1,7 @@
-@extends('std.layouts.default')
+@extends('layouts.default')
 
 @section('header')
-@include('std.parts.header', ['title' => 'Welcome to Slash', 'subtitle' => 'Create a new Post for your Weblog' ])
+@include('parts.header', ['title' => 'Welcome to Slash', 'subtitle' => 'Create a new Post for your Weblog' ])
 @endsection
 
 @section('content')
@@ -18,12 +18,26 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    
                 </div>
-            </div>
-            <!--// Summary of account. Where to go from here aside from the normal navigation //!-->
-            <a href='/posts/create'>Write a new post for your web log.</a>
 
+            </div>
+            <div class="card-deck">
+                
+                    <!--// Summary of account. Where to go from here aside from the normal navigation //!-->
+                <div class="card">
+                    <a  class="card-header bg-success" href='/posts/create'>Write a new post for your web log.</a>
+                </div>
+                <div class="card">
+                    <h6 class="card-header bg-success">Your Posts</a>
+                    <ol class="card-body">
+                        @foreach($posts as $post)
+                        <li><a href="/posts/{{$post->id}}">{{$post->title}}</a></li>
+                        @endforeach
+                    </ol>
+                </div>
+
+            </ul>
 
 
 @endsection
