@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Userpost;
 
 class DashboardController extends Controller
 {
@@ -13,6 +14,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $userposts = Userpost::collection();
         $posts = \App\Post::all();
         return view('dashboard', ['posts' => $posts]);
     }
