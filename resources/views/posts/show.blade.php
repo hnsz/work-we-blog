@@ -24,6 +24,7 @@
 
 
 </div>  <!--//      close div.card -->
+    @include('hashtag.index')
     @include("comment.section")
 @endsection
 

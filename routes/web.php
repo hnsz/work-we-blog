@@ -11,8 +11,8 @@
 |
 */
 
-use App\Http\Controllers\PostController;
-use Illuminate\Routing\RouteGroup;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::view('/home', 'slash');
 Route::view('/', 'slash');
@@ -25,6 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/dashboard', 'DashboardController'); 
 });
 
+Route::get('/posts/{post}/hashtags/', 'PostHashtagController@index');
     
     
 

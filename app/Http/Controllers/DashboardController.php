@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Userpost;
+use App\Http\Resources\Post as PostResource;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -14,9 +15,24 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $userposts = Userpost::collection();
-        $posts = \App\Post::all();
-        return view('dashboard', ['posts' => $posts]);
+        
+        $user = Auth::user();
+        $name = $user->name;
+        $member_since = $user->created_at;
+        $email = $user->email;
+        $verified = !is_null($user->email_verified_at);
+        $userposts = PostResource::collection($user->posts);
+        $last_login = null;
+        $last_login_ip = null;
+
+        $view_data = [  'posts' => $userposts, 
+                        'name' => $name,
+                        'email' => $email,
+                        'member_since' => $member_since,
+                        'verified' => $verified,
+
+            ];
+        return view('dashboard', $view_data);
     }
 
     /**
