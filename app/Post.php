@@ -22,6 +22,10 @@ class Post extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function hashtags()
+    {
+        return $this->belongsToMany('App\Hashtag')->using('App\PostHashtag');
+    }
     protected $attributes = [
         'published_at' => null,
     ];

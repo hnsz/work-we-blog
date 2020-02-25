@@ -48,6 +48,7 @@
 	</div>
 
 </form>
+	@include('hashtag.edit')
 
 
 @endsection
