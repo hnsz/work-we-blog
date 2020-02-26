@@ -12,17 +12,19 @@ class HashtagSeeder extends Seeder
      */
     public function run()
     {
-        $now = array_fill(0, 5, CarbonImmutable::now());
+        $tags =   [ "linux", 
+                        "parcelhero", 
+                        "europe", 
+                        "cybercrime",
+                        "technology",
+                        "hackercommunity"];
 
-       $tags = [ "linux", 
-        "parcelhero", 
-        "europe", 
-        "cybercrime",
-        "technology",
-        "hackercommunity",
-        ];
-        $to_insert = array_map(null, $tags, $now);
-        DB::table('hashtags')->insert($to_insert);
+        
+           $now =  CarbonImmutable::now();
+           $insdata = collect($tags)
+           ->map(fn($tag) => ['tag' => $tag, 'created_at' => $now]);
+        
+        DB::table('hashtags')->insert($insdata->toArray());
 
     }
 }

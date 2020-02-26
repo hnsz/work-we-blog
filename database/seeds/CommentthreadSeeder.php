@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CommentThreadSeeder extends Seeder
+class CommentthreadSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -84,4 +84,3 @@ class CommentThreadSeeder extends Seeder
     }
 
 }
-

@@ -11,10 +11,12 @@ class CreateHashtagsTable extends Migration
      *
      * @return void
      */
+    
     public function up()
     {
         Schema::create('hashtags', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('tag' , 51);
             $table->timestamps();
         });
     }

@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
 @section('header')
-@include('parts.header', ['title' => 'Welcome to Slash', 'subtitle' => 'Create a new Post for your Weblog' ])
+@include('parts.header', ['title' => 'Welcome to Slash', 'subtitle' => "" ])
 @endsection
 
-
+ 
 
 @section('content')
 <div class='card '>
@@ -12,6 +12,9 @@
         <span class=' badge badge-info'>{{$post->published_at}}</span>
         <span class=' badge badge-info'>{{$post->user->name}}</span>
     </h4>
+
+    Special message: {{$special}}
+
     @can('update', $post)
         <a href="/posts/{{$post->id}}/edit">edit</a>
     @endcan

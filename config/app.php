@@ -181,7 +181,7 @@ return [
          */
         App\Providers\SeedDataServiceProvider::class,
         App\Providers\RequestProvider::class,
-        
+        App\Providers\ViewServiceProvider::class,
     ],
 
     /*
