@@ -11,6 +11,7 @@
 |
 */
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,15 +23,14 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('/posts', 'PostController');
+    Route::resource('/posts/{post}/comments', 'CommentController');
     Route::resource('/dashboard', 'DashboardController'); 
 });
 
 Route::get('/posts/{post}/hashtags/', 'PostHashtagController@index');
     
-    
 
-// Route::get('posts/{post}/comments/', 'CommentController@index');
-// Route::post('/posts/{post}/reply/', 'ReplyableController@reply' );
+
 
 
 

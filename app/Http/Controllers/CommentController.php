@@ -15,10 +15,14 @@ class CommentController extends Controller
      */
     public function index(\App\Post $post)
     {
-        //
+        //Nothing
+        /**
         $thread = $post->threadstarter->commentThread;
         return $thread->replies;
         return view('posts.read', ['post' => $post]);
+         */
+
+        return view('comments.index', ['post' => $post]);
     }
 
     /**

@@ -21,11 +21,12 @@ class DashboardController extends Controller
         $member_since = $user->created_at;
         $email = $user->email;
         $verified = !is_null($user->email_verified_at);
-        $userposts = PostResource::collection($user->posts);
+        // $userposts = Post::collection($user->posts);
         $last_login = null;
         $last_login_ip = null;
 
-        $view_data = [  'posts' => $userposts, 
+        $view_data = [  
+            // 'posts' => $userposts, 
                         'name' => $name,
                         'email' => $email,
                         'member_since' => $member_since,

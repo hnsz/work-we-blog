@@ -13,7 +13,6 @@
         <span class=' badge badge-info'>{{$post->user->name}}</span>
     </h4>
 
-    Special message: {{$special}}
 
     @can('update', $post)
         <a href="/posts/{{$post->id}}/edit">edit</a>
@@ -28,7 +27,8 @@
 
 </div>  <!--//      close div.card -->
     @include('hashtag.index')
-    @include("comment.section")
+    @include("comments.section")
+    
 @endsection
 
 

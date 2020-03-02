@@ -8,4 +8,5 @@ class PostHashtag extends Pivot
 {
     //
     public $incrementing = true;
+
 }

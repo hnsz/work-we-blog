@@ -13,6 +13,11 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Notifications\Action;
 use Illuminate\Support\Facades\Response;
 
+
+use App\Http\Resources\Hashtag as HashtagResource;
+use App\Hashtag;
+
+
 class PostController extends Controller
 {
     public function __construct()
@@ -83,8 +88,8 @@ class PostController extends Controller
 
             $post->save();
 
-                        
-
+            $post->hashtags()->saveMany(collect(Hashtag::tagfilter($post->body)));
+            
             return redirect('/posts')->with('message', 'Successfully added your post. You should find it in the list below.');
         }
 
@@ -99,8 +104,7 @@ class PostController extends Controller
      */
     public function show(\App\Post $post)
     {
-        // Auth::loginUsingId(4);
-         
+
         $viewmodel = ['post' => $post];
         return view('posts.show', $viewmodel);
     }

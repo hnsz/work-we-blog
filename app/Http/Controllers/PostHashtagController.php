@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\PostHashtag;
+use App\HashTag;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class PostHashtagController extends Controller
     public function index(Post $post)
     {
         
-        return "TAGS! of post {$post->id}";
+        
     }
 
     /**
@@ -25,9 +26,10 @@ class PostHashtagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
-        //
+        
+
     }
 
     /**

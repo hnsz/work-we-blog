@@ -27,6 +27,11 @@ class AddForeignKeyConstraints extends Migration
         Schema::table('commentthreads', function (Blueprint $table) {
             $table->foreign('threadstarter_id')->references('id')->on('threadstarters')->ondelete('cascade');
        });
+       Schema::table('post_hashtag', function(Blueprint $table) {
+            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('hashtag_id')->references('id')->on('hashtags');
+        });
+
        Schema::enableForeignKeyConstraints();
     }
 

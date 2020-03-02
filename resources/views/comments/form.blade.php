@@ -1,4 +1,4 @@
-<form method='post' action='/posts/{post}/comment' style='background-color:crimson; padding:10px;margin:15px;opacity:0.9;border-radius: 5px;'>
+<form method='post' action='{{action('CommentController@store' , ['post' => $post]) }}' style='background-color:crimson; padding:10px;margin:15px;opacity:0.9;border-radius: 5px;'>
 	@csrf
 	@method('post')
 	
