@@ -33,7 +33,7 @@ class PostController extends Controller
     {
 
         $posts = Post::all();
-        return view('posts.index', ['posts' => $posts]);
+        return view('post.index', ['posts' => $posts]);
     }
 
     /**
@@ -44,7 +44,7 @@ class PostController extends Controller
     public function create(Request $request)
     {
         //middlewareauth, redirect login (/register)
-        return view('posts.create');
+        return view('post.create');
     }
 
     /**
@@ -106,7 +106,7 @@ class PostController extends Controller
     {
 
         $viewmodel = ['post' => $post];
-        return view('posts.show', $viewmodel);
+        return view('post.show', $viewmodel);
     }
 
     /**
@@ -118,7 +118,7 @@ class PostController extends Controller
     public function edit(\App\Post $post)
     {
         $viewmodel = ['post' => $post];
-        return view('posts.edit', $viewmodel);
+        return view('post.edit', $viewmodel);
     }
 
     

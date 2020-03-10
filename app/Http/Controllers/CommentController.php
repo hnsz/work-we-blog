@@ -19,7 +19,7 @@ class CommentController extends Controller
         /**
         $thread = $post->threadstarter->commentThread;
         return $thread->replies;
-        return view('posts.read', ['post' => $post]);
+        return view('post.read', ['post' => $post]);
          */
 
         return view('comments.index', ['post' => $post]);
@@ -32,7 +32,7 @@ class CommentController extends Controller
      */
     public function create(\App\Post $post)
     {
-        return view('posts.read', ['post' => $post]);
+        return view('post.read', ['post' => $post]);
     }  
 
     /**
