@@ -21,7 +21,7 @@ class DashboardController extends Controller
         $member_since = $user->created_at;
         $email = $user->email;
         $verified = !is_null($user->email_verified_at);
-        $userposts = Post::collection($user->posts);
+        $userposts = $user->posts;
         $last_login = null;
         $last_login_ip = null;
 
