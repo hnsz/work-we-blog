@@ -25,7 +25,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         
-        View::composer('post.show', 'App\Http\View\Composers\PostComposer');
+        View::composer('components.post', 'App\Http\View\Composers\PostComposer');
         View::composer('comments.section', 'App\Http\View\Composers\CommentsComposer');
 
 

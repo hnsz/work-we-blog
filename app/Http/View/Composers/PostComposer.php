@@ -11,10 +11,11 @@ class PostComposer
 
     public function __construct(Request $request )
     {
+        $this->request = $request;
     }
     public function compose(View $view)
     {
-           
+           dd("fuck  view composer + component + post->hashtags");
     }
 
 }

@@ -62,7 +62,6 @@ class PostController extends Controller
 		    'required',
 		    'between:5,199;',
 		    'string',
-
 	    ],
 
 	    'body' => [
